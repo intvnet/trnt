@@ -40,3 +40,12 @@ md-menu-content md-menu-item .md-button{
     position: relative;
     margin:8px auto;    }
 
+#nav{
+    position: fixed;
+    left:0;
+    top:64px;
+    width: 300px;
+    z-index: 999;
+    background: #fff;
+}
+

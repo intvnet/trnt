@@ -3,6 +3,7 @@ var app = angular.module("trntApp",["ngMaterial","ui.router"]);
 app.run(function($rootScope){
     $rootScope.loadingshow=false;
     $rootScope.aipUrl="http://ba.trnt.kr";
+
 });
 
 app.directive('script', function() {
@@ -35,6 +36,9 @@ app.config(function($stateProvider,$urlRouterProvider){
             },
             footerView:{
                 templateUrl:"view/footer.html"
+            },
+            navView:{
+                templateUrl:"view/nav.html"
             }
         }
     });
@@ -50,6 +54,9 @@ app.config(function($stateProvider,$urlRouterProvider){
             },
             footerView:{
                 templateUrl:"view/footer.html"
+            },
+            navView:{
+                templateUrl:"view/nav.html"
             }
         }
     });
@@ -65,6 +72,9 @@ app.config(function($stateProvider,$urlRouterProvider){
             },
             footerView:{
                 templateUrl:"view/footer.html"
+            },
+            navView:{
+                templateUrl:"view/nav.html"
             }
         }
     });
@@ -85,12 +95,14 @@ app.config(function($stateProvider,$urlRouterProvider){
     
 });
 
-app.controller("headerCtrl",function (){
+app.controller("headerCtrl",function ($scope){
 
     var originatorEv;
     this.openMenu = function($mdOpenMenu, ev) {
         originatorEv = ev;
         $mdOpenMenu(ev);
-
     }
+
 });
+
+
