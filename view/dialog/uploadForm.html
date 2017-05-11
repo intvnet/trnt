@@ -1,0 +1,24 @@
+<md-dialog class="uploadForm">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Upload</h2>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <p class="">* 엑셀파일 한개만 선택 등록 가능합니다.</p>
+            <input type="file">
+
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <md-button ng-click="upload()">
+                Upload
+            </md-button>
+            <md-button ng-click="cancel()">
+                Cancel
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
