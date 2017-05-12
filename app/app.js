@@ -2,7 +2,8 @@ var app = angular.module("trntApp",["ngMaterial","ui.router"]);
 
 app.run(function($rootScope){
     $rootScope.loadingshow=false;
-    $rootScope.aipUrl="http://ba.trnt.kr";
+    $rootScope.menuOn=false;
+    $rootScope.aipUrl="http://10.20.12.14:8080";
 
 });
 
@@ -95,14 +96,15 @@ app.config(function($stateProvider,$urlRouterProvider){
     
 });
 
-app.controller("headerCtrl",function ($scope){
+app.controller("bodyCtrl",function ($scope,$rootScope){
+    $rootScope.loadingshow=false;
 
-    var originatorEv;
-    this.openMenu = function($mdOpenMenu, ev) {
-        originatorEv = ev;
-        $mdOpenMenu(ev);
+
+    $scope.menuToggle=function(){
+        $rootScope.menuOn=!$rootScope.menuOn;
     }
 
 });
+
 
 

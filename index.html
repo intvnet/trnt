@@ -12,9 +12,9 @@
 </head>
 <body ng-app="trntApp" ng-cloak>
 
-<div id="wrap">
-    <header id="header" ui-view="headerView" ng-controller="headerCtrl as headerCtrl"></header>
-    <nav id="nav" ui-view="navView"></nav>
+<div id="wrap" ng-controller="bodyCtrl">
+    <header id="header" ui-view="headerView"></header>
+    <nav id="nav" ui-view="navView" ng-class="{on : menuOn}"></nav>
     <md-content id="content" ui-view="contentView"></md-content>
     <footer id="footer" ui-view="footerView"></footer>
 </div>

@@ -1,8 +1,16 @@
-1
+<div class="nav_mask" ng-click="menuToggle()">
 
-<script>
-    $(function(){
-        //$("#header nav").height($(window).height());
+</div>
+<ul ng-class="{on : menuOn}">
+    <li>
+        <a href="/#/chart">
+            <md-button>chart</md-button>
+        </a>
+    </li>
+    <li>
+        <a href="/#/list">
+            <md-button>list</md-button>
+        </a>
+    </li>
+</ul>
 
-    });
-</script>

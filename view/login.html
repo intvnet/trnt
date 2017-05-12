@@ -1,6 +1,6 @@
 <div class="login_wrap">
 
-    <form ng-submit="login(user)">
+    <form ng-submit="login(user)" method="post">
 
 
 
@@ -13,7 +13,7 @@
         <div class="input_area">
             <md-input-container class="md-block">
                 <label>ID</label>
-                <input type="text" name="userId" ng-model="user.userID">
+                <input type="text" name="userId" ng-model="user.userId">
             </md-input-container>
             <md-input-container class="md-block">
                 <label>PASS</label>

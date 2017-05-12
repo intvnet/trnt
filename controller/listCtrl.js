@@ -1,13 +1,15 @@
 app.controller("listCtrl",["$scope","$rootScope","$http","$mdDialog",function($scope,$rootScope,$http,$mdDialog){
     //alert("리스트 컨트롤러");
     $scope.type="리스트";
-
-
+    $rootScope.menuOn=false;
 
 
     //리스트 가져오기
     $scope.getList =function(){
         $rootScope.loadingshow=true;
+
+
+
         //$scope.datas=[];
         var promise=$http({
             url:$rootScope.aipUrl+'/api/test',
@@ -17,7 +19,6 @@ app.controller("listCtrl",["$scope","$rootScope","$http","$mdDialog",function($s
 
         promise.error(function(data){
             alert("error");
-            $rootScope.loadingshow=false;
         });
         promise.success(function(data) {
             $scope.datas = data;
@@ -66,9 +67,9 @@ app.controller("listCtrl",["$scope","$rootScope","$http","$mdDialog",function($s
 
             google.charts.load('current', {'packages':['table']});
             google.charts.setOnLoadCallback(drawTable);
-            $rootScope.loadingshow=false;
-        });
 
+        });
+        $rootScope.loadingshow=false;
     }
 
     $scope.getList();
