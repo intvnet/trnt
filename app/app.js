@@ -23,7 +23,8 @@ app.directive('script', function() {
 
 app.config(function($stateProvider,$urlRouterProvider){
 
-    $urlRouterProvider.otherwise("/chart");
+    $urlRouterProvider.otherwise("/login");
+
 
     $stateProvider.state("chart",{
         url:"/chart",
@@ -91,6 +92,24 @@ app.config(function($stateProvider,$urlRouterProvider){
                 templateUrl:"view/footer.html"
             }
 
+        }
+    });
+    $stateProvider.state("main",{
+        url:"/main",
+        views:{
+            headerView:{
+                templateUrl:"view/header.html"
+            },
+            contentView:{
+                templateUrl:"view/main.html",
+                controller:"mainCtrl"
+            },
+            footerView:{
+                templateUrl:"view/footer.html"
+            },
+            navView:{
+                templateUrl:"view/nav.html"
+            }
         }
     });
     

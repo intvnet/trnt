@@ -2,7 +2,7 @@ app.controller("loginCtrl",function($scope,$rootScope,$http,$state){
     $rootScope.loadingshow=false;
 
     $scope.login=function(user){
-        console.log(user.userId+":"+user.password);
+        //console.log(user.userId+":"+user.password);
 
         var promise=$http({
             url:$rootScope.aipUrl+"/api/login",
@@ -13,9 +13,16 @@ app.controller("loginCtrl",function($scope,$rootScope,$http,$state){
 
         promise.error(function(data) {
             console.log(data);
+            alert("error!");
         });
         promise.success(function(data) {
-            console.log(data);
+            console.log(data.code+":"+data.message);
+            if(data.code===1){
+                //alert(data.message);
+                $state.go("main");
+            }else{
+                alert(data.message);
+            }
         });
     }
 
