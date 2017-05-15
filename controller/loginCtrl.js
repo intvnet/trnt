@@ -6,8 +6,9 @@ app.controller("loginCtrl",function($scope,$rootScope,$http,$state){
 
         var promise=$http({
             url:$rootScope.aipUrl+"/api/login",
-            method:"GET",
-            data:user
+            method:"POST",
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            data:$.param(user)
         });
 
         promise.error(function(data) {
