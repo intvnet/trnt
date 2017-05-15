@@ -3,6 +3,7 @@ app.controller("loginCtrl",function($scope,$rootScope,$http,$state){
 
     $scope.login=function(user){
         //console.log(user.userId+":"+user.password);
+        
 
         var promise=$http({
             url:$rootScope.aipUrl+"/api/login",

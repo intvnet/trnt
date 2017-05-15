@@ -105,14 +105,6 @@ app.controller("listCtrl",["$scope","$rootScope","$http","$mdDialog",function($s
     }
 
 
-    window.onscroll = function(ev) {
-        if ((/*window.innerHeight +*/ window.scrollY) >= document.body.offsetHeight) {
-           // alert("you're at the bottom of the page");
-            //console.log("window.innerHeight + window.scrollY:"+( window.scrollY)+"document.body.offsetHeight:"+document.body.offsetHeight);
-
-
-        }
-    };
 
 
 }]);
