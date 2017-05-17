@@ -19,8 +19,9 @@ app.controller("chartCtrl",["$scope","$rootScope","$http",function($scope,$rootS
         promise.error(function(data,status){
             if(status===401){
                 $state.go("login");
+            }else{
+                alert("error!");
             }
-            alert("error");
         });
         promise.success(function(data,status){
             if(status===401){

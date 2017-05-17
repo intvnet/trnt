@@ -18,7 +18,7 @@ app.controller("loginCtrl",function($scope,$rootScope,$http,$state){
         promise.success(function(data,status) {
             //console.log(data.code+":"+data.message);
             if(data.code===1){
-                //alert(data.message);
+                alert(data.message);
                 sessionStorage.setItem('userId',user.userId);
                 $state.go("main");
             }else{
