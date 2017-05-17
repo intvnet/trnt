@@ -9,7 +9,10 @@ app.controller("mainCtrl",function($scope,$rootScope,$http,$state){
         url:$rootScope.aipUrl+'/api/test',
         method:'GET',
 
-    }).error(function(data){
+    }).error(function(data,status){
+        if(status===401){
+            $state.go("login");
+        }
         console.log(data);
         alert("error!");
         $rootScope.loadingshow=false;

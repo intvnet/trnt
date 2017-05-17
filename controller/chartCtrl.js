@@ -16,10 +16,18 @@ app.controller("chartCtrl",["$scope","$rootScope","$http",function($scope,$rootS
 
         });
 
-        promise.error(function(data){
+        promise.error(function(data,status){
+            if(status===401){
+                $state.go("login");
+            }
             alert("error");
         });
-        promise.success(function(data){
+        promise.success(function(data,status){
+            if(status===401){
+                $state.go("login");
+            }
+
+
             $scope.datas=data;
 
 

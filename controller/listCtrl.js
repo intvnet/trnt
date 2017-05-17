@@ -17,8 +17,12 @@ app.controller("listCtrl",["$scope","$rootScope","$http","$mdDialog","$state",fu
 
         });
 
-        promise.error(function(data){
+        promise.error(function(data,status){
+            if(status===401){
+                $state.go("login");
+            }
             alert("error");
+            console.log(data);
         });
         promise.success(function(data,status) {
             if(status===401){
