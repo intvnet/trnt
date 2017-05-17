@@ -82,4 +82,11 @@ md-menu-content md-menu-item .md-button{
     padding: 6px 6px 6px 18px;
 }
 
-
+.usertxt{
+    font-size: 13px;
+    padding-right: 10px;
+}
+.usertxt .material-icons{
+    font-size: 19px;
+    color: #00b8d4;
+}

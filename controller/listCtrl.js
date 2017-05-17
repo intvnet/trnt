@@ -1,4 +1,4 @@
-app.controller("listCtrl",["$scope","$rootScope","$http","$mdDialog",function($scope,$rootScope,$http,$mdDialog){
+app.controller("listCtrl",["$scope","$rootScope","$http","$mdDialog","$state",function($scope,$rootScope,$http,$mdDialog,$state){
     //alert("리스트 컨트롤러");
     $scope.type="리스트";
     $rootScope.menuOn=false;
@@ -20,10 +20,12 @@ app.controller("listCtrl",["$scope","$rootScope","$http","$mdDialog",function($s
         promise.error(function(data){
             alert("error");
         });
-        promise.success(function(data) {
+        promise.success(function(data,status) {
+            if(status===401){
+                $state.go("login");
+            }
+
             $scope.datas = data;
-
-
 
             //표 그리기
             function drawTable() {

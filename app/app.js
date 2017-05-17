@@ -4,6 +4,7 @@ app.run(function($rootScope){
     $rootScope.loadingshow=false;
     $rootScope.menuOn=false;
     $rootScope.aipUrl="http://10.20.12.14:8080";
+    
 
 });
 
@@ -23,7 +24,7 @@ app.directive('script', function() {
 
 app.config(function($stateProvider,$urlRouterProvider){
 
-    $urlRouterProvider.otherwise("/login");
+    $urlRouterProvider.otherwise("/main");
 
 
     $stateProvider.state("chart",{
@@ -122,7 +123,7 @@ app.controller("bodyCtrl",function ($scope,$rootScope){
     $scope.menuToggle=function(){
         $rootScope.menuOn=!$rootScope.menuOn;
     }
-
+    
 });
 
 

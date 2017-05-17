@@ -1,14 +1,17 @@
 <md-toolbar class="md-theme-light">
     <h2 class="md-toolbar-tools">
         <div>
-
-                <md-button class="md-icon-button" ng-click="menuToggle()">
-                    <md-icon class="material-icons" >menu</md-icon>
-                </md-button>
-
-
+            <md-button class="md-icon-button" ng-click="menuToggle()">
+                <md-icon class="material-icons" >menu</md-icon>
+            </md-button>
         </div>
         <a href="#/main"><span>TRNT</span></a>
+
+        <span flex></span>
+        <span class="usertxt">
+            <md-icon class="material-icons">person</md-icon>
+            {{storageUserId}}
+        </span>
     </h2>
 </md-toolbar>
 
