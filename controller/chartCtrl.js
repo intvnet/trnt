@@ -18,14 +18,14 @@ app.controller("chartCtrl",["$scope","$rootScope","$http",function($scope,$rootS
 
         promise.error(function(data,status){
             if(status===401){
-                $state.go("login");
+                location.href="/login.html";
             }else{
                 alert("error!");
             }
         });
         promise.success(function(data,status){
             if(status===401){
-                $state.go("login");
+                location.href="/login.html";
             }
 
 

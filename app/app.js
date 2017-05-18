@@ -81,20 +81,7 @@ app.config(function($stateProvider,$urlRouterProvider){
             }
         }
     });
-    $stateProvider.state("login",{
-        url:"/login",
-        views:{
-
-            contentView:{
-                templateUrl:"view/login.html",
-                controller:"loginCtrl"
-            },
-            footerView:{
-                templateUrl:"view/footer.html"
-            }
-
-        }
-    });
+    
     $stateProvider.state("main",{
         url:"/main",
         views:{

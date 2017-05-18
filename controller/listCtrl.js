@@ -19,14 +19,14 @@ app.controller("listCtrl",["$scope","$rootScope","$http","$mdDialog","$state",fu
 
         promise.error(function(data,status){
             if(status===401){
-                $state.go("login");
+                location.href="/login.html";
             }else{
                 alert("error!");
             }
         });
         promise.success(function(data,status) {
             if(status===401){
-                $state.go("login");
+                location.href="/login.html";
             }
 
             $scope.datas = data;

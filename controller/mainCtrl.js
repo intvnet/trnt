@@ -11,14 +11,14 @@ app.controller("mainCtrl",function($scope,$rootScope,$http,$state){
 
     }).error(function(data,status){
         if(status===401){
-            $state.go("login");
+            location.href="/login.html";
         }else{
             alert("error!");
         }
         $rootScope.loadingshow=false;
     }).success(function(data,status){
         if(status===401){
-            $state.go("login");
+            location.href="/login.html";
         }
         console.log(data[0].BUYING_DATE);
         $rootScope.loadingshow=false;
