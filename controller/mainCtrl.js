@@ -10,6 +10,7 @@ app.controller("mainCtrl",function($scope,$rootScope,$http,$state){
         method:'GET',
 
     }).error(function(data,status){
+        console.log(status);
         if(status===401){
             location.href="/login.html";
         }else{
@@ -17,11 +18,17 @@ app.controller("mainCtrl",function($scope,$rootScope,$http,$state){
         }
         $rootScope.loadingshow=false;
     }).success(function(data,status){
+        console.log(status);
         if(status===401){
             location.href="/login.html";
         }
         console.log(data[0].BUYING_DATE);
         $rootScope.loadingshow=false;
     });
+
+
+    $scope.dateSubmit=function(myDate){
+        console.log(myDate.toLocaleString());
+    }
 });
 

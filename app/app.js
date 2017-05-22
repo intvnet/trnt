@@ -1,10 +1,10 @@
-var app = angular.module("trntApp",["ngMaterial","ui.router"]);
+var app = angular.module("trntApp",["ngMaterial","ui.router","ngMessages"]);
 
 app.run(function($rootScope){
     $rootScope.loadingshow=false;
     $rootScope.menuOn=false;
     $rootScope.aipUrl="http://10.20.12.14:8080";
-    
+    $rootScope.myDate=new Date();
 
 });
 

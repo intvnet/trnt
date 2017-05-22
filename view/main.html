@@ -1,1 +1,38 @@
 {{msg}}
+
+<div>
+    <form ng-submit="dateSubmit(myDate)" method="post">
+        <div>
+            <md-input-container>
+                <md-datepicker name="myDate" ng-model="myDate" md-placeholder="Enter date" md-open-on-focus></md-datepicker>
+            </md-input-container>
+        </div>
+
+        <div>
+            <md-input-container>
+                <label>Project Type</label>
+                <md-select name="type" ng-model="project.type">
+                    <md-option value="app">Application</md-option>
+                    <md-option value="web">Website</md-option>
+                    <md-option value="web">Website</md-option>
+                    <md-option value="web">Website</md-option>
+                    <md-option value="web">Website</md-option>
+                    <md-option value="web">Website</md-option>
+                    <md-option value="web">Website</md-option>
+                    <md-option value="web">Website</md-option>
+
+                </md-select>
+            </md-input-container>
+        </div>
+
+        <div>
+            <md-input-container>
+                <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                    Checkbox 1: {{ data.cb1 }}
+                </md-checkbox>
+            </md-input-container>
+        </div>
+
+        <button type="submit">123</button>
+    </form>
+</div>
