@@ -27,11 +27,11 @@
                 <div class="input_area">
                     <md-input-container class="md-block">
                         <label>ID</label>
-                        <input type="text" name="userId" ng-model="user.userId" id="userId">
+                        <input type="text" name="userId" ng-model="user.userId" id="userId" required>
                     </md-input-container>
                     <md-input-container class="md-block">
                         <label>PASS</label>
-                        <input type="password" name="password" ng-model="user.password" id="password">
+                        <input type="password" name="password" ng-model="user.password" id="password" required>
                     </md-input-container>
                 </div>
                 <div class="btn_area">
@@ -80,7 +80,8 @@
                 url:"http://10.20.12.14:8080/api/login",
                 method:"POST",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                data:$.param(user)
+                data:$.param(user),
+                withCredentials: true
             });
 
             promise.error(function(data,status) {
@@ -92,7 +93,8 @@
                 if(data.code===1){
                     alert(data.message);
                     sessionStorage.setItem('userId',user.userId);
-                    location.href="/#/main";
+                    $rootScope,storageUserId=sessionStorage.getItem('userId');
+                    //location.href="/#/main";
                 }else{
                     alert(data.message);
                     document.getElementById("userId").value="";

@@ -8,7 +8,7 @@ app.controller("mainCtrl",function($scope,$rootScope,$http,$state){
     $http({
         url:$rootScope.aipUrl+'/api/test',
         method:'GET',
-
+        withCredentials: true,
     }).error(function(data,status){
         console.log(status);
         if(status===401){

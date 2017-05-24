@@ -13,7 +13,7 @@ app.controller("chartCtrl",["$scope","$rootScope","$http",function($scope,$rootS
         var promise=$http({
             url:$rootScope.aipUrl+'/api/test',
             method:'GET',
-
+            withCredentials: true,
         });
 
         promise.error(function(data,status){

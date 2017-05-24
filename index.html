@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" ng-app="trntApp" ng-cloak ng-controller="htmlCtrl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<body ng-app="trntApp" ng-cloak>
+<body>
 
-<div id="wrap" ng-controller="bodyCtrl">
+<div id="wrap">
     <header id="header" ui-view="headerView"></header>
     <nav id="nav" ui-view="navView" ng-class="{on : menuOn}"></nav>
     <md-content id="content" ui-view="contentView"></md-content>
@@ -38,9 +38,8 @@
     <!-- controller -->
     <script src="controller/chartCtrl.js"></script>
     <script src="controller/listCtrl.js"></script>
-    <script src="controller/uploadCtrl.js"></script>
-    <script src="controller/loginCtrl.js"></script>
     <script src="controller/mainCtrl.js"></script>
+    <script src="controller/uploadCtrl.js"></script>
 
 </body>
 </html>

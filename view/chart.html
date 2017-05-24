@@ -2,13 +2,16 @@
 </script>
 
 {{type}}
+<md-button class="md-accent md-raised" ng-click="showAdvanced($event)"  >
+    업로드
+</md-button>
 <div id="chart_div"></div>
 
 <div>
     <li ng-repeat="data in datas">
-        <a href="#">{{data.BUYING_DATE}}</a>
-        <a href="#">{{data.RECEIVED_PRICE}}</a>
-        <a href="#">{{data.SHIPPED_PRICE}}</a>
+        <a>{{data.BUYING_DATE}}</a>
+        <a>{{data.RECEIVED_PRICE}}</a>
+        <a>{{data.SHIPPED_PRICE}}</a>
     </li>
 </div>
 

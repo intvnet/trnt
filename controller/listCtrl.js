@@ -1,4 +1,4 @@
-app.controller("listCtrl",["$scope","$rootScope","$http","$mdDialog","$state",function($scope,$rootScope,$http,$mdDialog,$state){
+app.controller("listCtrl",["$scope","$rootScope","$http","$state",function($scope,$rootScope,$http,$state){
     //alert("리스트 컨트롤러");
     $scope.type="리스트";
     $rootScope.menuOn=false;
@@ -14,7 +14,7 @@ app.controller("listCtrl",["$scope","$rootScope","$http","$mdDialog","$state",fu
         var promise=$http({
             url:$rootScope.aipUrl+'/api/test',
             method:'GET',
-
+            withCredentials: true,
         });
 
         promise.error(function(data,status){
@@ -30,7 +30,7 @@ app.controller("listCtrl",["$scope","$rootScope","$http","$mdDialog","$state",fu
             }
 
             $scope.datas = data;
-
+/*
             //표 그리기
             function drawTable() {
                 var insertData = new google.visualization.DataTable();
@@ -73,7 +73,7 @@ app.controller("listCtrl",["$scope","$rootScope","$http","$mdDialog","$state",fu
 
             google.charts.load('current', {'packages':['table']});
             google.charts.setOnLoadCallback(drawTable);
-
+*/
         });
         $rootScope.loadingshow=false;
     }
@@ -81,34 +81,7 @@ app.controller("listCtrl",["$scope","$rootScope","$http","$mdDialog","$state",fu
     $scope.getList();
     
     
-    //업로드 창 열기
-    $scope.showAdvanced = function(ev) {
 
-        $mdDialog.show({
-            controller: DialogController,
-            templateUrl: 'view/dialog/uploadForm.html',
-            parent: angular.element(document.body),
-            targetEvent: ev,
-            clickOutsideToClose:true,
-            fullscreen: false // Only for -xs, -sm breakpoints.
-        })
-
-    };
-
-    function DialogController($scope, $mdDialog) {
-        $scope.hide = function() {
-            $mdDialog.hide();
-        };
-
-        $scope.cancel = function() {
-            $mdDialog.cancel();
-        };
-
-        $scope.upload = function() {
-            //$mdDialog.hide(answer);
-            alert(1)
-        };
-    }
 
 
 
