@@ -2,6 +2,7 @@ app.controller("listCtrl",["$scope","$rootScope","$http","$state",function($scop
     //alert("리스트 컨트롤러");
     $scope.type="리스트";
     $rootScope.menuOn=false;
+    
 
 
     //리스트 가져오기

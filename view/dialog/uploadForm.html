@@ -6,10 +6,19 @@
             </div>
         </md-toolbar>
 
+        <md-radio-group ng-model="sourceType" name="sourceType" ng-show="uploadRadioShow" required>
+
+            <md-radio-button value="e">EC모니터</md-radio-button>
+            <md-radio-button value="s">세영</md-radio-button>
+
+        </md-radio-group>
+
         <md-dialog-content>
             <p class="">* 엑셀파일 한개만 선택 등록 가능합니다.</p>
             <input type="file" name="uploadFile" required>
         </md-dialog-content>
+
+
 
         <md-dialog-actions layout="row">
             <md-button type="submit">
@@ -21,3 +30,8 @@
         </md-dialog-actions>
     </form>
 </md-dialog>
+
+<style>
+    md-radio-button{display:inline;}
+    md-radio-group{text-align: center;padding-top: 10px;font-size: 13px;}
+</style>

@@ -94,7 +94,7 @@
                     alert(data.message);
                     sessionStorage.setItem('userId',user.userId);
                     $rootScope,storageUserId=sessionStorage.getItem('userId');
-                    //location.href="/#/main";
+                    location.href="/";
                 }else{
                     alert(data.message);
                     document.getElementById("userId").value="";

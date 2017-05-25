@@ -1,17 +1,21 @@
 app.controller("uploadCtrl",function ($http,$scope,$rootScope,$state){
-   
-
+   console.log($state.current.name);
+    $scope.uploadRadioShow=false;
+    if($state.current.name == "list"){
+        $scope.uploadRadioShow=true;
+    }
 
 //파일 업로드 하기
     $scope.goUploadFile=function(){
         var uploadForm=document.getElementById('uploadForm');
         var formData=new FormData(uploadForm);
-        //formData.append("fileUpload",uploadForm.uploadFile.files[0]);
+
         var uploadFile=uploadForm.uploadFile.files[0];
         var fileName=uploadFile.name;
 
-        //console.log(fileName.length);
-        //console.log("라스트인덱스"+fileName.lastIndexOf("."));
+
+        console.log($scope.sourceType);
+
 
 
         if(fileName.lastIndexOf(".") != -1){
