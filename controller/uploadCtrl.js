@@ -3,10 +3,14 @@ app.controller("uploadCtrl",function ($http,$scope,$rootScope,$state){
     $scope.uploadRadioShow=false;
     if($state.current.name == "list"){
         $scope.uploadRadioShow=true;
+        $scope.sourceType="e";
     }
+
+
 
 //파일 업로드 하기
     $scope.goUploadFile=function(){
+
         var uploadForm=document.getElementById('uploadForm');
         var formData=new FormData(uploadForm);
 
@@ -15,7 +19,6 @@ app.controller("uploadCtrl",function ($http,$scope,$rootScope,$state){
 
 
         console.log($scope.sourceType);
-
 
 
         if(fileName.lastIndexOf(".") != -1){
