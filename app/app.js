@@ -27,15 +27,15 @@ app.config(function($stateProvider,$urlRouterProvider){
     $urlRouterProvider.otherwise("/main");
 
 
-    $stateProvider.state("chart",{
-        url:"/chart",
+    $stateProvider.state("orderHistory",{
+        url:"/orderHistory",
         views:{
             headerView:{
                 templateUrl:"view/header.html"
             },
             contentView:{
-                templateUrl:"view/chart.html",
-                controller:"chartCtrl"
+                templateUrl:"view/orderHistory.html",
+                controller:"orderHistoryCtrl"
             },
             footerView:{
                 templateUrl:"view/footer.html"
@@ -45,15 +45,15 @@ app.config(function($stateProvider,$urlRouterProvider){
             }
         }
     });
-    $stateProvider.state("list",{
-        url:"/list",
+    $stateProvider.state("buyingHistory",{
+        url:"/buyingHistory",
         views:{
             headerView:{
                 templateUrl:"view/header.html"
             },
             contentView:{
-                templateUrl:"view/list.html",
-                controller:"listCtrl"
+                templateUrl:"view/buyingHistory.html",
+                controller:"buyingHistoryCtrl"
             },
             footerView:{
                 templateUrl:"view/footer.html"

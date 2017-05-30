@@ -1,13 +1,13 @@
 
-app.controller("chartCtrl",["$scope","$rootScope","$http",function($scope,$rootScope,$http){
+app.controller("orderHistoryCtrl",["$scope","$rootScope","$http",function($scope,$rootScope,$http){
     //alert("차트 컨트롤러");
     $scope.type="차트";
     $rootScope.menuOn=false;
-    $rootScope.loadingshow=false;
+
 
     $scope.getChart=function(){
 
-        //$rootScope.loadingshow=true;
+        $rootScope.loadingshow=true;
 
         $scope.datas=[];
         var promise=$http({

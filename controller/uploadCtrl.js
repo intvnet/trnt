@@ -1,15 +1,40 @@
 app.controller("uploadCtrl",function ($http,$scope,$rootScope,$state){
    console.log($state.current.name);
-    $scope.uploadRadioShow=false;
-    if($state.current.name == "list"){
+    $rootScope.uploadLoadingshow=false;
+    //기본전송 URL test
+    $scope.ajaxURL="/api/fileUpload/test";
+
+    //주문내역 업로드할때 라이오 버튼 보이게
+    if($state.current.name == "orderHistory"){
         $scope.uploadRadioShow=true;
         $scope.sourceType="e";
     }
 
 
 
+
+
+
 //파일 업로드 하기
     $scope.goUploadFile=function(){
+        $scope.uploadLoadingshow=true;
+
+        //사입내역에서 업로드 할때
+        if($state.current.name == "buyingHistory"){
+            $scope.ajaxURL="/api/fileUpload/buyingHistory";
+        }
+        //주문내역에서 업로드 할때
+        if($state.current.name == "orderHistory"){
+            if($scope.sourceType=="e"){
+                $scope.ajaxURL="/api/fileUpload//orderHistoryEcm";
+            }else if($scope.sourceType=="s"){
+                $scope.ajaxURL="/api/fileUpload/orderHistorySeyoung";
+            }
+
+        }
+
+
+
 
         var uploadForm=document.getElementById('uploadForm');
         var formData=new FormData(uploadForm);
@@ -25,7 +50,7 @@ app.controller("uploadCtrl",function ($http,$scope,$rootScope,$state){
             var fileExt=fileName.substring(fileName.lastIndexOf(".")+1,fileName.length).toLowerCase();
             if(fileExt=="xlsx" || fileExt=="xls" || fileExt=="csv"){
                 $http({
-                    url:$rootScope.aipUrl+"/api/fileUpload/test",
+                    url:$rootScope.aipUrl+$scope.ajaxURL,
                     method:"POST",
                     headers: {'Content-Type':undefined},
                     transformRequest: angular.identity,
@@ -34,19 +59,21 @@ app.controller("uploadCtrl",function ($http,$scope,$rootScope,$state){
                 }).success(function(data,status){
                     alert(status);
                     console.log(data);
+                    $scope.uploadLoadingshow=false;
+                    $state.reload();
                 }).error(function(data,status){
                     alert("error");
-                    console.log(data)
+                    console.log(data);
+                    $scope.uploadLoadingshow=false;
                 });
             }else{
                 alert("please insert xlsx,xls,csv file!!");
+                $scope.uploadLoadingshow=false;
             }
         }else{
             alert("no ext!!");
+            $scope.uploadLoadingshow=false;
         }
-
-
-
 
 
     }

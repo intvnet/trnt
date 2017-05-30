@@ -1,0 +1,58 @@
+<div class="list_wrap">
+    <p class="upload_wrap">
+
+        <md-button class="md-accent md-raised" ng-click="showAdvanced($event)"  >
+            업로드
+        </md-button>
+    </p>
+
+
+    <div class="dataTable_wrap">
+        <table>
+            <colgroup>
+                <col style="width:100px;">
+                <col style="width:100px;">
+                <col style="width:150px;">
+                <col style="width:100px;">
+                <col style="width:100px;">
+                <col style="width:100px;">
+                <col style="width:100px;">
+                <col style="width:100px;">
+            </colgroup>
+            <thead>
+            <tr>
+                <th>사입코드</th>
+                <th>사입일</th>
+                <th>상품코드</th>
+                <th>입고구분</th>
+                <th>출고수량</th>
+                <th>송신수량</th>
+                <th>출고금액</th>
+                <th>매입단가</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="data in datas">
+                <td>{{data.buyingNo}}</td>
+                <td>{{data.buyingDate}}</td>
+                <td>{{data.itemBarcode}}</td>
+                <td>{{data.buyingPlaningType | bpTypeFilter}}</td>
+                <td>{{data.shippedQty}}</td>
+                <td>{{data.receiviedQty}}</td>
+                <td>{{data.shippedAmount | currency}}</td>
+                <td>{{data.buyingPrice | currency}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <div ng-show="moreBtnShow"><button ng-click="moreGetList()">더보기</button></div>
+
+
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    $(function(){
+
+    });
+</script>

@@ -22,7 +22,7 @@ app.controller("mainCtrl",function($scope,$rootScope,$http,$state){
         if(status===401){
             location.href="/login.html";
         }
-        console.log(data[0].BUYING_DATE);
+        
         $rootScope.loadingshow=false;
     });
 

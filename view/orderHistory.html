@@ -7,13 +7,17 @@
         업로드
     </md-button>
 </p>
-<div id="chart_div"></div>
+
 
 <div>
     <li ng-repeat="data in datas">
-        <a>{{data.BUYING_DATE}}</a>
-        <a>{{data.RECEIVED_PRICE}}</a>
-        <a>{{data.SHIPPED_PRICE}}</a>
+        <a>{{data.buyingDate}}</a>
+        <a>{{data.buyingNo}}</a>
+        <a>{{data.buyingPrice}}</a>
     </li>
 </div>
+<div class="paging_wrap" id="paging_wrap">
+
+</div>
+
 

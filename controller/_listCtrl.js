@@ -1,4 +1,4 @@
-app.controller("listCtrl",["$scope","$rootScope","$http","$state",function($scope,$rootScope,$http,$state){
+app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",function($scope,$rootScope,$http,$state){
     //alert("리스트 컨트롤러");
     $scope.type="리스트";
     $rootScope.menuOn=false;
