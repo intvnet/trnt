@@ -26,7 +26,7 @@ app.controller("uploadCtrl",function ($http,$scope,$rootScope,$state){
         //주문내역에서 업로드 할때
         if($state.current.name == "orderHistory"){
             if($scope.sourceType=="e"){
-                $scope.ajaxURL="/api/fileUpload//orderHistoryEcm";
+                $scope.ajaxURL="/api/fileUpload/orderHistoryEcm";
             }else if($scope.sourceType=="s"){
                 $scope.ajaxURL="/api/fileUpload/orderHistorySeyoung";
             }

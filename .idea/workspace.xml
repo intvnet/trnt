@@ -53,8 +53,8 @@
       <file leaf-file-name="uploadCtrl.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controller/uploadCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="63" column="47" selection-start-line="63" selection-start-column="47" selection-end-line="63" selection-end-column="47" />
+            <state relative-caret-position="221">
+              <caret line="28" column="48" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -364,12 +364,12 @@
       <workItem from="1495678101288" duration="8745000" />
       <workItem from="1495757506798" duration="4957000" />
       <workItem from="1496021769402" duration="17663000" />
-      <workItem from="1496104739911" duration="13431000" />
+      <workItem from="1496104739911" duration="13798000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="213807000" />
+    <option name="totallyTimeSpent" value="214174000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="401" y="9" width="1459" height="1024" extended-state="0" />
@@ -751,8 +751,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controller/uploadCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="63" column="47" selection-start-line="63" selection-start-column="47" selection-end-line="63" selection-end-column="47" />
+        <state relative-caret-position="221">
+          <caret line="28" column="48" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
           <folding />
         </state>
       </provider>
