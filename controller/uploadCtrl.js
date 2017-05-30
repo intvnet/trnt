@@ -1,5 +1,6 @@
 app.controller("uploadCtrl",function ($http,$scope,$rootScope,$state){
-   console.log($state.current.name);
+   //console.log($state.current.name);
+    $scope.currentState=$state.current.name;
     $rootScope.uploadLoadingshow=false;
     //기본전송 URL test
     $scope.ajaxURL="/api/fileUpload/test";

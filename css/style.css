@@ -99,7 +99,7 @@ md-menu-content md-menu-item .md-button{
     padding-left: calc(50% - 20px);
     padding-top: 100px;
 }
-
+.md-toolbar-tools>h2>span{font-size: 15px}
 .dataTable_wrap{
     width: 1300px;
     text-align: center;
