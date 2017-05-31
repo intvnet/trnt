@@ -135,3 +135,13 @@ md-menu-content md-menu-item .md-button{
     top:-20px;
     margin-left: 20px;
 }
+
+.search_wrap{
+    height: 100px;
+    overflow: hidden;
+}
+.pageTitle{
+    position: absolute;
+    top:0;
+    left:30px;
+}

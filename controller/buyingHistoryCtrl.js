@@ -102,7 +102,6 @@ app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",funct
             }
 
         }).success(function(data,status) {
-
             if(status===401){
                 location.href="/login.html";
             }
