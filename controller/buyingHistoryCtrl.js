@@ -48,15 +48,24 @@ app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",funct
 
 
     $scope.searchBuying=function(){
+
+        var startDateValue;
+        var endDateValue;
+        if($scope.startDate !=null){
+            startDateValue=$scope.startDate.getFullYear()+"-"+(($scope.startDate.getMonth()+1)<10 ? '0'+($scope.startDate.getMonth()+1) : ($scope.startDate.getMonth()+1))+"-"+($scope.startDate.getDate()<10 ? '0'+$scope.startDate.getDate():$scope.startDate.getDate());
+        }
+
+        if($scope.endDate !=null){
+            endDateValue=$scope.endDate.getFullYear()+"-"+(($scope.endDate.getMonth()+1)<10 ? '0'+($scope.endDate.getMonth()+1) : ($scope.endDate.getMonth()+1))+"-"+($scope.endDate.getDate()<10 ? '0'+$scope.endDate.getDate():$scope.endDate.getDate());
+        }
+
+
         $rootScope.loadingshow=true;
-
-        console.log($scope.startDate);
-
-
+        
         $http({
             url:$rootScope.aipUrl+'/api/buyingHistory',
             method:'GET',
-            params:{"pageNum":1,"startDate":$scope.startDate,"endDate":$scope.endDate,"searchWord":$scope.searchWord},
+            params:{"pageNum":1,"startDate":startDateValue,"endDate":endDateValue,"searchWord":$scope.searchWord},
             withCredentials: true,
         }).error(function(data,status){
             if(status===401){
@@ -87,12 +96,23 @@ app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",funct
 
 
     $scope.moreGetList=function(){
+
+        var startDateValue;
+        var endDateValue;
+        if($scope.startDate !=null){
+            startDateValue=$scope.startDate.getFullYear()+"-"+(($scope.startDate.getMonth()+1)<10 ? '0'+($scope.startDate.getMonth()+1) : ($scope.startDate.getMonth()+1))+"-"+($scope.startDate.getDate()<10 ? '0'+$scope.startDate.getDate():$scope.startDate.getDate());
+        }
+
+        if($scope.endDate !=null){
+            endDateValue=$scope.endDate.getFullYear()+"-"+(($scope.endDate.getMonth()+1)<10 ? '0'+($scope.endDate.getMonth()+1) : ($scope.endDate.getMonth()+1))+"-"+($scope.endDate.getDate()<10 ? '0'+$scope.endDate.getDate():$scope.endDate.getDate());
+        }
+
         $rootScope.loadingshow=true;
 
         $http({
             url:$rootScope.aipUrl+'/api/buyingHistory',
             method:'GET',
-            params:{"pageNum":$scope.pageNum+1,"startDate":$scope.startDate,"endDate":$scope.endDate,"searchWord":$scope.searchWord},
+            params:{"pageNum":$scope.pageNum+1,"startDate":startDateValue,"endDate":endDateValue,"searchWord":$scope.searchWord},
             withCredentials: true,
         }).error(function(data,status){
             if(status===401){
