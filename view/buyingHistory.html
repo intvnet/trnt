@@ -6,6 +6,29 @@
         </md-button>
     </p>
 
+    <div class="search_wrap">
+        <form ng-submit="searchBuying()" id="searchForm">
+
+            <md-input-container>
+                <label>시작일</label>
+                <md-datepicker name="startDate" ng-model="startDate" md-open-on-focus></md-datepicker>
+            </md-input-container>
+
+            <span class="dateBetween">~</span>
+
+            <md-input-container>
+                <label>종료일</label>
+                <md-datepicker name="endDate" ng-model="endDate" md-open-on-focus></md-datepicker>
+            </md-input-container>
+
+            <md-input-container class="search_word_area">
+                <label>검색어</label>
+                <input ng-model="searchWord" name="searchWord">
+            </md-input-container>
+
+            <md-button class="md-raised md-primary" type="submit" >검색</md-button>
+        </form>
+    </div>
 
     <div class="dataTable_wrap">
         <table>
@@ -20,28 +43,28 @@
                 <col style="width:100px;">
             </colgroup>
             <thead>
-                <tr>
-                    <th>사입코드</th>
-                    <th>사입일</th>
-                    <th>상품코드</th>
-                    <th>입고구분</th>
-                    <th>출고수량</th>
-                    <th>송신수량</th>
-                    <th>출고금액</th>
-                    <th>매입단가</th>
-                </tr>
+            <tr>
+                <th>사입코드</th>
+                <th>사입일</th>
+                <th>상품코드</th>
+                <th>입고구분</th>
+                <th>출고수량</th>
+                <th>송신수량</th>
+                <th>출고금액</th>
+                <th>매입단가</th>
+            </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="data in datas">
-                    <td>{{data.buyingNo}}</td>
-                    <td>{{data.buyingDate}}</td>
-                    <td>{{data.itemBarcode}}</td>
-                    <td>{{data.buyingPlaningType | bpTypeFilter}}</td>
-                    <td>{{data.shippedQty}}</td>
-                    <td>{{data.receiviedQty}}</td>
-                    <td>{{data.shippedAmount | currency}}</td>
-                    <td>{{data.buyingPrice | currency}}</td>
-                </tr>
+            <tr ng-repeat="data in datas">
+                <td>{{data.buyingNo}}</td>
+                <td>{{data.buyingDate}}</td>
+                <td>{{data.itemBarcode}}</td>
+                <td>{{data.buyingPlaningType | bpTypeFilter}}</td>
+                <td>{{data.shippedQty}}</td>
+                <td>{{data.receiviedQty}}</td>
+                <td>{{data.shippedAmount | currency}}</td>
+                <td>{{data.buyingPrice | currency}}</td>
+            </tr>
             </tbody>
         </table>
         <div ng-show="moreBtnShow">

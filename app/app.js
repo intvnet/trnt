@@ -4,7 +4,9 @@ app.run(function($rootScope){
     $rootScope.loadingshow=false;
     $rootScope.menuOn=false;
     $rootScope.aipUrl="http://10.20.12.14:8080";
-    $rootScope.myDate=new Date();
+
+    //$rootScope.startDate=new Date(new Date() - 6 * 24 * 3600 * 1000);
+    //$rootScope.endDate=new Date();
 
 });
 

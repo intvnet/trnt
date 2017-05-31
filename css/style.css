@@ -118,3 +118,20 @@ md-menu-content md-menu-item .md-button{
 .dataTable_wrap tbody tr:nth-child(even){
     background: #a7ffeb;
 }
+
+.search_wrap .dateBetween{
+    position: relative;
+    top:-20px;
+    padding: 0px 10px 0px 20px;
+}
+
+.search_wrap .search_word_area{
+    position: relative;
+    top:-5px;
+    margin-left: 20px;
+}
+.search_wrap button.md-primary{
+    position: relative;
+    top:-20px;
+    margin-left: 20px;
+}

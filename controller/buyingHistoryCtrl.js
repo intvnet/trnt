@@ -4,7 +4,7 @@ app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",funct
     $rootScope.menuOn=false;
     $scope.moreBtnShow=false;
     var listSize=50;
-    $scope.datas=[];
+
 
     //리스트 가져오기
     $scope.getList =function(){
@@ -47,13 +47,16 @@ app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",funct
     $scope.getList();
 
 
-    $scope.moreGetList=function(){
+    $scope.searchBuying=function(){
         $rootScope.loadingshow=true;
+
+        console.log($scope.startDate);
+
 
         $http({
             url:$rootScope.aipUrl+'/api/buyingHistory',
             method:'GET',
-            params:{"pageNum":$scope.pageNum+1},
+            params:{"pageNum":1,"startDate":$scope.startDate,"endDate":$scope.endDate,"searchWord":$scope.searchWord},
             withCredentials: true,
         }).error(function(data,status){
             if(status===401){
@@ -67,8 +70,45 @@ app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",funct
                 location.href="/login.html";
             }
             if(data.code == 1){
+                $scope.datas = data.data;
+                $scope.totalCount=data.totalCount;
+                $scope.pageNum=data.pageNum;
+                if(data.pageNum*listSize < data.totalCount){
+                    $scope.moreBtnShow=true;
+                }
+            }else{
+                alert("error!! code : "+data.code);
+            }
+
+        });
+
+        $rootScope.loadingshow=false;
+    }
+
+
+    $scope.moreGetList=function(){
+        $rootScope.loadingshow=true;
+
+        $http({
+            url:$rootScope.aipUrl+'/api/buyingHistory',
+            method:'GET',
+            params:{"pageNum":$scope.pageNum+1,"startDate":$scope.startDate,"endDate":$scope.endDate,"searchWord":$scope.searchWord},
+            withCredentials: true,
+        }).error(function(data,status){
+            if(status===401){
+                location.href="/login.html";
+            }else{
+                alert("error!");
+            }
+
+        }).success(function(data,status) {
+
+            if(status===401){
+                location.href="/login.html";
+            }
+            if(data.code == 1){
                 for(var i=0;i<data.data.length;i++){
-                   $scope.datas.push(data.data[i]);
+                    $scope.datas.push(data.data[i]);
                 }
                 $scope.pageNum=data.pageNum;
                 if(data.pageNum*listSize < data.totalCount){
