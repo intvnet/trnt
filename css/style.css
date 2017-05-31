@@ -100,9 +100,13 @@ md-menu-content md-menu-item .md-button{
     padding-top: 100px;
 }
 .md-toolbar-tools>h2>span{font-size: 15px}
+
+
+/*사입내역*/
 .dataTable_wrap{
-    width: 1300px;
+    padding-left: 20px;
     text-align: center;
+    margin: auto;
 }
 .dataTable_wrap thead{
     background: #004d40;
@@ -119,6 +123,16 @@ md-menu-content md-menu-item .md-button{
     background: #a7ffeb;
 }
 
+
+.search_wrap{
+    height: 0px;
+    padding-left: 50px;
+    overflow: hidden;
+    transition:height 0.5s;
+}
+.search_wrap.on{
+    height: 103px;
+}
 .search_wrap .dateBetween{
     position: relative;
     top:-20px;
@@ -136,10 +150,34 @@ md-menu-content md-menu-item .md-button{
     margin-left: 20px;
 }
 
-.search_wrap{
-    height: 100px;
-    overflow: hidden;
+
+.searchBtn_wrap{
+    margin:0;
+    text-align: right;
+    width: 850px;
 }
+.buyingSearchBtn>i{
+    vertical-align: middle;
+}
+.md-button.md-icon-button.buyingSearchBtn{
+    padding:0;
+    margin:0;
+}
+.buyingSearchBtn{
+    font-size: 12px;
+    transform: rotate(0deg);
+    transition: transform 0.5s;
+}
+
+.buyingSearchBtn.on{
+    transform: rotate(180deg);
+}
+
+.moreBtn_wrap{width:900px;}
+/*사입내역*/
+
+
+
 .pageTitle{
     position: absolute;
     top:0;

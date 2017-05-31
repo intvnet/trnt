@@ -4,6 +4,7 @@ app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",funct
     $rootScope.menuOn=false;
     $scope.moreBtnShow=false;
     var listSize=50;
+    $scope.buyingSearchOn=false;
 
 
     //리스트 가져오기
@@ -45,8 +46,16 @@ app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",funct
     }
 
     $scope.getList();
+    
+    
+    //검색부분열기
+    $scope.buyingSearchToggle=function(){
+        $scope.buyingSearchOn = !$scope.buyingSearchOn;
+    }
+    
 
-
+    
+    //검색
     $scope.searchBuying=function(){
 
         var startDateValue;
@@ -61,7 +70,7 @@ app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",funct
 
 
         $rootScope.loadingshow=true;
-        
+
         $http({
             url:$rootScope.aipUrl+'/api/buyingHistory',
             method:'GET',
