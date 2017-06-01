@@ -1,22 +1,102 @@
 <script type="text/javascript-lazy">
 </script>
 
-{{type}}
-<p class="upload_wrap">
-    <md-button class="md-accent md-raised" ng-click="showAdvanced($event)"  >
-        업로드
-    </md-button>
-</p>
+<div class="list_wrap">
+    <h3 class="pageTitle">주문내역</h3>
+    <p class="upload_wrap">
+        <md-button class="md-accent md-raised" ng-click="showAdvanced($event)"  >
+            업로드
+        </md-button>
+    </p>
+
+    <p class="order_searchBtn_wrap">
+        <md-button ng-click="orderSearchToggle()">Search
+            <md-button ng-class="{on : orderSearchOn}" class="orderSearchBtn md-icon-button" ><i class="material-icons">keyboard_arrow_down</i></md-button>
+        </md-button>
+    </p>
+    <div class="order_search_wrap" ng-class="{on : orderSearchOn}">
+        <form ng-submit="searchOrder()" id="searchForm">
+
+            <md-input-container>
+                <label>시작일</label>
+                <md-datepicker name="startDate" ng-model="startDate" md-open-on-focus></md-datepicker>
+            </md-input-container>
+
+            <span class="dateBetween">~</span>
+
+            <md-input-container>
+                <label>종료일</label>
+                <md-datepicker name="endDate" ng-model="endDate" md-open-on-focus></md-datepicker>
+            </md-input-container>
+
+            <md-input-container class="search_word_area">
+                <label>검색어</label>
+                <input ng-model="searchWord" name="searchWord">
+            </md-input-container>
+
+            <md-button class="md-raised md-primary" type="submit" >검색</md-button>
+        </form>
+    </div>
+
+    <div class="dataTable_wrap">
+        <table>
+            <colgroup>
+                <col style="width:100px;">
+                <col style="width:100px;">
+                <col style="width:80px;">
+                <col style="width:80px;">
+                <col style="width:100px;">
+                <col style="width:200px;">
+                <col style="width:100px;">
+                <col style="width:200px;">
+                <col style="width:100px;">
+                <col style="width:100px;">
+                <col style="width:100px;">
+                <col style="width:100px;">
+            </colgroup>
+            <thead>
+            <tr>
+                <th rowspan="2">결제일</th>
+                <th rowspan="2">완료일</th>
+                <th rowspan="2">사업유형</th>
+                <th rowspan="2">채널</th>
+                <th rowspan="2">처리유형</th>
+                <th rowspan="2">주문번호</th>
+                <th rowspan="2">브랜드</th>
+                <th rowspan="2">상품코드</th>
+                <th colspan="3">상품매출</th>
+                <th rowspan="2">기타매출<br/>(배송비)</th>
+            </tr>
+            <tr>
+                <th>수량</th>
+                <th>단가</th>
+                <th>금액</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="data in datas">
+                <td>{{data.paymentDate}}</td>
+                <td>{{data.confirmDate}}</td>
+                <td>{{data.sourceType}}</td>
+                <td>{{data.channelName}}</td>
+                <td>{{data.orderStatusCodeTitle}}</td>
+                <td>{{data.orderNo}}</td>
+                <td>{{data.brandCodeTitle}}</td>
+                <td>{{data.itemBarcode}}</td>
+                <td>{{data.orderQty}}</td>
+                <td>{{data.salesPrice | currency:'\u20a9 ':0}}</td>
+                <td>{{data.salesAmount | currency:'\u20a9 ':0}}</td>
+                <td>{{data.shippingCost | currency:'\u20a9 ':0}}</td>
+
+            </tr>
+            </tbody>
+        </table>
+        <div class="moreBtn_wrap" ng-show="moreBtnShow">
+            <md-button class="md-raised md-primary" ng-click="moreGetList()">더보기</md-button>
+        </div>
 
 
-<div>
-    <li ng-repeat="data in datas">
-        <a>{{data.buyingDate}}</a>
-        <a>{{data.buyingNo}}</a>
-        <a>{{data.buyingPrice}}</a>
-    </li>
-</div>
-<div class="paging_wrap" id="paging_wrap">
+    </div>
 
 </div>
 

@@ -18,6 +18,7 @@
     width: 100%;
     padding: 20px 0 20px 0;
     border-top:solid 2px #c6c6c6;
+
     text-align: center;
     font-size: 12px;}
 md-menu-content md-menu-item .md-button{
@@ -104,14 +105,17 @@ md-menu-content md-menu-item .md-button{
 
 /*사입내역*/
 .dataTable_wrap{
-    padding-left: 20px;
+    padding-left: 5px;
     text-align: center;
     margin: auto;
 }
 .dataTable_wrap thead{
     background: #004d40;
-    font-size: 13px;
+    font-size: 12px;
     color:white;
+}
+.dataTable_wrap th{
+    padding: 5px 0;
 }
 .dataTable_wrap tbody{
     font-size: 12px;
@@ -124,34 +128,34 @@ md-menu-content md-menu-item .md-button{
 }
 
 
-.search_wrap{
+.buy_search_wrap{
     height: 0px;
-    padding-left: 50px;
+    padding-left: 20px;
     overflow: hidden;
     transition:height 0.5s;
 }
-.search_wrap.on{
+.buy_search_wrap.on{
     height: 103px;
 }
-.search_wrap .dateBetween{
+.buy_search_wrap .dateBetween{
     position: relative;
     top:-20px;
     padding: 0px 10px 0px 20px;
 }
 
-.search_wrap .search_word_area{
+.buy_search_wrap .search_word_area{
     position: relative;
     top:-5px;
     margin-left: 20px;
 }
-.search_wrap button.md-primary{
+.buy_search_wrap button.md-primary{
     position: relative;
     top:-20px;
     margin-left: 20px;
 }
 
 
-.searchBtn_wrap{
+.buy_searchBtn_wrap{
     margin:0;
     text-align: right;
     width: 850px;
@@ -173,10 +177,63 @@ md-menu-content md-menu-item .md-button{
     transform: rotate(180deg);
 }
 
-.moreBtn_wrap{width:900px;}
-/*사입내역*/
+.buy_moreBtn_wrap{width:900px;}
+/*-------------------------------------------------------------------------------------------사입내역*/
 
 
+/*주문내역*/
+
+.order_search_wrap{
+    height: 0px;
+    overflow: hidden;
+    transition:height 0.5s;
+}
+.order_search_wrap.on{
+    height: 103px;
+}
+.order_search_wrap .dateBetween{
+    position: relative;
+    top:-20px;
+    padding: 0px 10px 0px 20px;
+}
+
+.order_search_wrap .search_word_area{
+    position: relative;
+    top:-5px;
+    margin-left: 20px;
+}
+.order_search_wrap button.md-primary{
+    position: relative;
+    top:-20px;
+    margin-left: 20px;
+}
+
+
+.order_searchBtn_wrap{
+    margin:0;
+    text-align: right;
+    width: 1400px;
+}
+.orderSearchBtn>i{
+    vertical-align: middle;
+}
+.md-button.md-icon-button.orderSearchBtn{
+    padding:0;
+    margin:0;
+}
+.orderSearchBtn{
+    font-size: 12px;
+    transform: rotate(0deg);
+    transition: transform 0.5s;
+}
+
+.orderSearchBtn.on{
+    transform: rotate(180deg);
+}
+
+.order_moreBtn_wrap{width:1400px;}
+
+/*----------------------------------------------------------------------------------------주문내역*/
 
 .pageTitle{
     position: absolute;

@@ -1,9 +1,10 @@
 app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",function($scope,$rootScope,$http,$state){
     //alert("리스트 컨트롤러");
-    $scope.type="리스트";
     $rootScope.menuOn=false;
     $scope.moreBtnShow=false;
     var listSize=50;
+    var startDateValue;
+    var endDateValue;
     $scope.buyingSearchOn=false;
 
 
@@ -58,13 +59,14 @@ app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",funct
     //검색
     $scope.searchBuying=function(){
 
-        var startDateValue;
-        var endDateValue;
-        if($scope.startDate !=null){
-            startDateValue=$scope.startDate.getFullYear()+"-"+(($scope.startDate.getMonth()+1)<10 ? '0'+($scope.startDate.getMonth()+1) : ($scope.startDate.getMonth()+1))+"-"+($scope.startDate.getDate()<10 ? '0'+$scope.startDate.getDate():$scope.startDate.getDate());
+
+        if(($scope.startDate !=null && $scope.endDate==null) || ($scope.startDate ==null && $scope.endDate != null)){
+            alert("검색일을 선택하여 주세요!");
+            return false;
         }
 
-        if($scope.endDate !=null){
+        if($scope.startDate !=null && $scope.endDate !=null){
+            startDateValue=$scope.startDate.getFullYear()+"-"+(($scope.startDate.getMonth()+1)<10 ? '0'+($scope.startDate.getMonth()+1) : ($scope.startDate.getMonth()+1))+"-"+($scope.startDate.getDate()<10 ? '0'+$scope.startDate.getDate():$scope.startDate.getDate());
             endDateValue=$scope.endDate.getFullYear()+"-"+(($scope.endDate.getMonth()+1)<10 ? '0'+($scope.endDate.getMonth()+1) : ($scope.endDate.getMonth()+1))+"-"+($scope.endDate.getDate()<10 ? '0'+$scope.endDate.getDate():$scope.endDate.getDate());
         }
 

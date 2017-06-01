@@ -1,11 +1,39 @@
 <div class="list_wrap">
-    <p class="upload_wrap">
+    <h3 class="pageTitle">사입내역</h3>
 
+    <p class="upload_wrap">
         <md-button class="md-accent md-raised" ng-click="showAdvanced($event)"  >
             업로드
         </md-button>
     </p>
+    <p class="buy_searchBtn_wrap">
+        <md-button ng-click="buyingSearchToggle()">Search
+            <md-button ng-class="{on : buyingSearchOn}" class="buyingSearchBtn md-icon-button" ><i class="material-icons">keyboard_arrow_down</i></md-button>
+        </md-button>
+    </p>
+    <div class="buy_search_wrap" ng-class="{on : buyingSearchOn}">
+        <form ng-submit="searchBuying()" id="searchForm">
 
+            <md-input-container>
+                <label>시작일</label>
+                <md-datepicker name="startDate" ng-model="startDate" md-open-on-focus></md-datepicker>
+            </md-input-container>
+
+            <span class="dateBetween">~</span>
+
+            <md-input-container>
+                <label>종료일</label>
+                <md-datepicker name="endDate" ng-model="endDate" md-open-on-focus></md-datepicker>
+            </md-input-container>
+
+            <md-input-container class="search_word_area">
+                <label>검색어</label>
+                <input ng-model="searchWord" name="searchWord">
+            </md-input-container>
+
+            <md-button class="md-raised md-primary" type="submit" >검색</md-button>
+        </form>
+    </div>
 
     <div class="dataTable_wrap">
         <table>
@@ -39,12 +67,12 @@
                 <td>{{data.buyingPlaningType | bpTypeFilter}}</td>
                 <td>{{data.shippedQty}}</td>
                 <td>{{data.receiviedQty}}</td>
-                <td>{{data.shippedAmount | currency}}</td>
-                <td>{{data.buyingPrice | currency}}</td>
+                <td>{{data.shippedAmount | currency:'\u20a9 ':0}}</td>
+                <td>{{data.buyingPrice | currency:'\u20a9 ':1}}</td>
             </tr>
             </tbody>
         </table>
-        <div ng-show="moreBtnShow">
+        <div class="buy_moreBtn_wrap" ng-show="moreBtnShow">
             <md-button class="md-raised md-primary" ng-click="moreGetList()">더보기</md-button>
         </div>
 

@@ -6,12 +6,12 @@
             업로드
         </md-button>
     </p>
-    <p class="searchBtn_wrap">
+    <p class="buy_searchBtn_wrap">
         <md-button ng-click="buyingSearchToggle()">Search
             <md-button ng-class="{on : buyingSearchOn}" class="buyingSearchBtn md-icon-button" ><i class="material-icons">keyboard_arrow_down</i></md-button>
         </md-button>
     </p>
-    <div class="search_wrap" ng-class="{on : buyingSearchOn}">
+    <div class="buy_search_wrap" ng-class="{on : buyingSearchOn}">
         <form ng-submit="searchBuying()" id="searchForm">
 
             <md-input-container>
@@ -72,7 +72,7 @@
             </tr>
             </tbody>
         </table>
-        <div class="moreBtn_wrap" ng-show="moreBtnShow">
+        <div class="buy_moreBtn_wrap" ng-show="moreBtnShow">
             <md-button class="md-raised md-primary" ng-click="moreGetList()">더보기</md-button>
         </div>
 

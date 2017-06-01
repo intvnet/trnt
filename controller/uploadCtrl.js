@@ -44,8 +44,6 @@ app.controller("uploadCtrl",function ($http,$scope,$rootScope,$state){
         var fileName=uploadFile.name;
 
 
-        console.log($scope.sourceType);
-
 
         if(fileName.lastIndexOf(".") != -1){
             var fileExt=fileName.substring(fileName.lastIndexOf(".")+1,fileName.length).toLowerCase();
@@ -58,12 +56,17 @@ app.controller("uploadCtrl",function ($http,$scope,$rootScope,$state){
                     data:formData,
                     withCredentials: true
                 }).success(function(data,status){
-                    alert(status);
                     console.log(data);
+                    if(data.code<=0){
+                        alert("error! "+data.message);
+                    }else{
+                        alert("success!!");
+                        $scope.hide();
+                        $state.reload();
+                    }
                     $scope.uploadLoadingshow=false;
-                    $state.reload();
                 }).error(function(data,status){
-                    alert("error");
+                    alert("error!");
                     console.log(data);
                     $scope.uploadLoadingshow=false;
                 });
