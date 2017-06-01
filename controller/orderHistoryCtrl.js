@@ -3,12 +3,12 @@ app.controller("orderHistoryCtrl",["$scope","$rootScope","$http","$state",functi
     //alert("차트 컨트롤러");
     $scope.type="차트";
     $rootScope.menuOn=false;
-    console.log(window.document.URL);
 
 
-    $scope.getChart=function(selectPage){
 
-        if(selectPage==null){alert(1)}else{alert(2)}
+    $scope.getChart=function(){
+
+
 
         $rootScope.loadingshow=true;
 
