@@ -10,7 +10,7 @@
     </p>
 
     <p class="order_searchBtn_wrap">
-        <md-button ng-click="orderSearchToggle()">Search
+         <md-button ng-click="orderSearchToggle()">Search
             <md-button ng-class="{on : orderSearchOn}" class="orderSearchBtn md-icon-button" ><i class="material-icons">keyboard_arrow_down</i></md-button>
         </md-button>
     </p>
@@ -18,21 +18,33 @@
         <form ng-submit="searchOrder()" id="searchForm">
 
             <md-input-container>
-                <label>시작일</label>
+                <label>결제일</label>
                 <md-datepicker name="startDate" ng-model="startDate" md-open-on-focus></md-datepicker>
             </md-input-container>
 
             <span class="dateBetween">~</span>
 
             <md-input-container>
-                <label>종료일</label>
+                <label>완료일</label>
                 <md-datepicker name="endDate" ng-model="endDate" md-open-on-focus></md-datepicker>
             </md-input-container>
 
+            <select name="channel" ng-model="channel">
+                <option value="">채널선택</option>
+                <option value="{{channelOption.CHANNEL_UID}}" ng-repeat="channelOption in channelOptions">{{channelOption.CHANNEL_NAME}}</option>
+            </select>
+
+            <select name="statusCode" ng-model="statusCode">
+                <option value="">처리유형</option>
+                <option value="SHCP">배송</option>
+            </select>
+
             <md-input-container class="search_word_area">
-                <label>검색어</label>
+                <label>주문번호</label>
                 <input ng-model="searchWord" name="searchWord">
             </md-input-container>
+
+
 
             <md-button class="md-raised md-primary" type="submit" >검색</md-button>
         </form>
@@ -77,10 +89,10 @@
             <tr ng-repeat="data in datas">
                 <td>{{data.paymentDate}}</td>
                 <td>{{data.confirmDate}}</td>
-                <td>{{data.sourceType}}</td>
+                <td>{{data.sourceType | odTypeFilter}}</td>
                 <td>{{data.channelName}}</td>
                 <td>{{data.orderStatusCodeTitle}}</td>
-                <td>{{data.orderNo}}</td>
+                <td>{{data.channelOrderNo}}</td>
                 <td>{{data.brandCodeTitle}}</td>
                 <td>{{data.itemBarcode}}</td>
                 <td>{{data.orderQty}}</td>
@@ -92,7 +104,7 @@
             </tbody>
         </table>
         <div class="moreBtn_wrap" ng-show="moreBtnShow">
-            <md-button class="md-raised md-primary" ng-click="moreGetList()">더보기</md-button>
+            <md-button class="md-raised md-primary" ng-click="moreOrderList()">더보기</md-button>
         </div>
 
 

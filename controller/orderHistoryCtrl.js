@@ -5,14 +5,50 @@ app.controller("orderHistoryCtrl",["$scope","$rootScope","$http","$state",functi
     $scope.orderSearchOn=false;
     $scope.moreBtnShow=false;
     var listSize=50;
+    var promise;
+    var startDateValue;
+    var endDateValue;
 
 
+    
+    
+    //검색옵션 불러오기
+    $scope.getChannelList=function(){
+
+        $http({
+            url:$rootScope.aipUrl+'/api/channel',
+            method:'GET',
+            withCredentials: true,
+        }).error(function(data,status){
+            $rootScope.checkStatus(status);
+            alert("error!");
+        }).success(function(data,status){
+            $rootScope.checkStatus(status);
+            if(data.code<=0){
+                alert("error! message : "+data.message);
+            }else{
+                $scope.channelOptions=data.data;
+            }
+        });
+    }
+    $scope.getChannelList();
+    
     //검색부분열기
     $scope.orderSearchToggle=function(){
         $scope.orderSearchOn = !$scope.orderSearchOn;
     }
-    
-    //초반
+
+
+
+    $scope.getOrderApi=function(){
+        promise=$http({
+            url:$rootScope.aipUrl+'/api/orderHistory',
+            method:'GET',
+            params:{"pageNum":$scope.pageNum},
+            withCredentials: true,
+        });
+    }
+
     
     
     //데이터 가져오기
@@ -20,26 +56,25 @@ app.controller("orderHistoryCtrl",["$scope","$rootScope","$http","$state",functi
     $scope.getOrderList=function(){
 
         $rootScope.loadingshow=true;
+        $scope.pageNum=1;
 
-        $http({
-            url:$rootScope.aipUrl+'/api/orderHistory',
-            method:'GET',
-            params:{"pageNum":1},
-            withCredentials: true,
-        }).error(function(data,status){
-            if(status===401){
-                location.href="/login.html";
+        $scope.getOrderApi();
+
+        promise.error(function(data,status){
+            $rootScope.checkStatus(status);
+            alert("error!");
+        });
+        promise.success(function(data,status){
+            $rootScope.checkStatus(status);
+            if(data.code <= 0){
+                alert("error! message : "+data.message);
             }else{
-                alert("error!");
+                $scope.datas=data.data;
+                if(data.pageNum*listSize < data.totalCount){
+                    $scope.moreBtnShow=true;
+                }
             }
-        }).success(function(data,status){
-            if(status===401){
-                location.href="/login.html";
-            }
-
-
-            $scope.datas=data.data;
-            console.log(data.data);
+            
 
         });
 
@@ -50,4 +85,57 @@ app.controller("orderHistoryCtrl",["$scope","$rootScope","$http","$state",functi
 
 
 
+
+    //검색하기
+    $scope.searchOrder=function(){
+        alert($scope.channel);
+    }
+
+
+
+
+    
+    //더보기 버튼
+    $scope.moreOrderList=function(){
+
+        $rootScope.loadingshow=true;
+        $scope.pageNum++;
+
+        $scope.getOrderApi();
+
+        promise.error(function(data,status){
+            $rootScope.checkStatus(status);
+            alert("error!");
+        });
+        promise.success(function(data,status){
+            $rootScope.checkStatus(status);
+            if(data.code <= 0){
+                alert("error! message : "+data.message);
+            }else{
+                for(var i=0;i<data.data.length;i++){
+                    $scope.datas.push(data.data[i]);
+                }
+                if(data.pageNum*listSize < data.totalCount){
+                    $scope.moreBtnShow=true;
+                }
+            }
+
+
+        });
+
+        $rootScope.loadingshow=false;
+
+    }
+
 }]);
+
+//필터
+app.filter("odTypeFilter",function(){
+    return function(input){
+        if(input=="E"){
+            return "자체";
+        }else if(input=="S"){
+            return "위탁";
+        }
+    }
+});

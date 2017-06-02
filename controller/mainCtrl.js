@@ -1,7 +1,7 @@
 app.controller("mainCtrl",function($scope,$rootScope,$http,$state){
 
     $rootScope.storageUserId=sessionStorage.getItem('userId');
-    $scope.msg="메인";
+    
 
     $rootScope.loadingshow=true;
 

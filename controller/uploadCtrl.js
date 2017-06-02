@@ -58,7 +58,7 @@ app.controller("uploadCtrl",function ($http,$scope,$rootScope,$state){
                 }).success(function(data,status){
                     console.log(data);
                     if(data.code<=0){
-                        alert("error! "+data.message);
+                        alert("error! message : "+data.message);
                     }else{
                         alert("success!!");
                         $scope.hide();

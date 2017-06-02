@@ -6,38 +6,46 @@ app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",funct
     var startDateValue;
     var endDateValue;
     $scope.buyingSearchOn=false;
+    var promise;
 
 
-    //리스트 가져오기
-    $scope.getList =function(){
-        $rootScope.loadingshow=true;
 
-        $http({
+
+    $scope.getBuyingApi=function(){
+        promise=$http({
             url:$rootScope.aipUrl+'/api/buyingHistory',
             method:'GET',
-            params:{"pageNum":1},
+            params:{"pageNum":$scope.pageNum,"startDate":startDateValue,"endDate":endDateValue,"searchWord":$scope.searchWord},
             withCredentials: true,
-        }).error(function(data,status){
-            if(status===401){
-                location.href="/login.html";
-            }else{
-                alert("error!");
-            }
+        });
+    }
 
-        }).success(function(data,status) {
-            if(status===401){
-                location.href="/login.html";
-            }
-            if(data.code == 1){
+    //리스트 가져오기
+    $scope.getBuyingList =function(){
+        $rootScope.loadingshow=true;
+        $scope.pageNum=1;
+
+        $scope.getBuyingApi();
+
+        promise.error(function(data,status){
+            $rootScope.checkStatus(status);
+            alert("error!");
+
+
+        });
+        promise.success(function(data,status) {
+            $rootScope.checkStatus(status);
+
+            if(data.code<=0){
+                alert("error! message : "+data.message);
+            }else{
                 $scope.datas = data.data;
                 $scope.totalCount=data.totalCount;
-                $scope.pageNum=data.pageNum;
                 if(data.pageNum*listSize < data.totalCount){
                     $scope.moreBtnShow=true;
                 }
-            }else{
-                alert("error!! code : "+data.code);
             }
+
 
         });
 
@@ -46,7 +54,7 @@ app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",funct
 
     }
 
-    $scope.getList();
+    $scope.getBuyingList();
     
     
     //검색부분열기
@@ -72,33 +80,30 @@ app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",funct
 
 
         $rootScope.loadingshow=true;
+        $scope.pageNum=1;
 
-        $http({
-            url:$rootScope.aipUrl+'/api/buyingHistory',
-            method:'GET',
-            params:{"pageNum":1,"startDate":startDateValue,"endDate":endDateValue,"searchWord":$scope.searchWord},
-            withCredentials: true,
-        }).error(function(data,status){
-            if(status===401){
-                location.href="/login.html";
+        $scope.getBuyingApi();
+
+        promise.error(function(data,status){
+            $rootScope.checkStatus(status);
+            alert("error!");
+
+
+        });
+
+        promise.success(function(data,status) {
+            $rootScope.checkStatus(status);
+
+            if(data.code<=0){
+                alert("error! message : "+data.message);
             }else{
-                alert("error!");
-            }
-
-        }).success(function(data,status) {
-            if(status===401){
-                location.href="/login.html";
-            }
-            if(data.code == 1){
                 $scope.datas = data.data;
                 $scope.totalCount=data.totalCount;
-                $scope.pageNum=data.pageNum;
                 if(data.pageNum*listSize < data.totalCount){
                     $scope.moreBtnShow=true;
                 }
-            }else{
-                alert("error!! code : "+data.code);
             }
+
 
         });
 
@@ -108,44 +113,38 @@ app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",funct
 
     $scope.moreGetList=function(){
 
-        var startDateValue;
-        var endDateValue;
-        if($scope.startDate !=null){
-            startDateValue=$scope.startDate.getFullYear()+"-"+(($scope.startDate.getMonth()+1)<10 ? '0'+($scope.startDate.getMonth()+1) : ($scope.startDate.getMonth()+1))+"-"+($scope.startDate.getDate()<10 ? '0'+$scope.startDate.getDate():$scope.startDate.getDate());
+        if(($scope.startDate !=null && $scope.endDate==null) || ($scope.startDate ==null && $scope.endDate != null)){
+            alert("검색일을 선택하여 주세요!");
+            return false;
         }
 
-        if($scope.endDate !=null){
+        if($scope.startDate !=null && $scope.endDate !=null){
+            startDateValue=$scope.startDate.getFullYear()+"-"+(($scope.startDate.getMonth()+1)<10 ? '0'+($scope.startDate.getMonth()+1) : ($scope.startDate.getMonth()+1))+"-"+($scope.startDate.getDate()<10 ? '0'+$scope.startDate.getDate():$scope.startDate.getDate());
             endDateValue=$scope.endDate.getFullYear()+"-"+(($scope.endDate.getMonth()+1)<10 ? '0'+($scope.endDate.getMonth()+1) : ($scope.endDate.getMonth()+1))+"-"+($scope.endDate.getDate()<10 ? '0'+$scope.endDate.getDate():$scope.endDate.getDate());
         }
 
         $rootScope.loadingshow=true;
+        $scope.pageNum++;
 
-        $http({
-            url:$rootScope.aipUrl+'/api/buyingHistory',
-            method:'GET',
-            params:{"pageNum":$scope.pageNum+1,"startDate":startDateValue,"endDate":endDateValue,"searchWord":$scope.searchWord},
-            withCredentials: true,
-        }).error(function(data,status){
-            if(status===401){
-                location.href="/login.html";
+        $scope.getBuyingApi();
+
+        promise.error(function(data,status){
+            $rootScope.checkStatus(status);
+            alert("error!");
+
+        });
+
+        promise.success(function(data,status) {
+            $rootScope.checkStatus(status);
+            if(data.code<=0){
+                alert("error!! code : "+data.code);
             }else{
-                alert("error!");
-            }
-
-        }).success(function(data,status) {
-            if(status===401){
-                location.href="/login.html";
-            }
-            if(data.code == 1){
                 for(var i=0;i<data.data.length;i++){
                     $scope.datas.push(data.data[i]);
                 }
-                $scope.pageNum=data.pageNum;
                 if(data.pageNum*listSize < data.totalCount){
                     $scope.moreBtnShow=true;
                 }
-            }else{
-                alert("error!! code : "+data.code);
             }
 
         });

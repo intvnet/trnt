@@ -125,6 +125,11 @@ app.controller("htmlCtrl",function ($scope,$rootScope,$state,$mdDialog){
         };
     }
 
+    $rootScope.checkStatus=function(status){
+        if(status===401){
+            location.href="/login.html";
+        }
+    }
 });
 
 
