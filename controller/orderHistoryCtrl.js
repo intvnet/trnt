@@ -6,8 +6,8 @@ app.controller("orderHistoryCtrl",["$scope","$rootScope","$http","$state",functi
     $scope.moreBtnShow=false;
     var listSize=50;
     var promise;
-    var startDateValue;
-    var endDateValue;
+    var confirmDateValue;
+    var paymentDateValue;
 
 
     
@@ -44,7 +44,14 @@ app.controller("orderHistoryCtrl",["$scope","$rootScope","$http","$state",functi
         promise=$http({
             url:$rootScope.aipUrl+'/api/orderHistory',
             method:'GET',
-            params:{"pageNum":$scope.pageNum},
+            params:{"pageNum":$scope.pageNum,
+            "paymentDate":paymentDateValue,
+            "confirmDate":confirmDateValue,
+            "channel":$scope.channel,
+            "statusCode":$scope.statusCode,
+            "channelOrderNo":$scope.channelOrderNo,
+            "itemBarcode":$scope.itemBarcode
+            },
             withCredentials: true,
         });
     }
@@ -88,7 +95,27 @@ app.controller("orderHistoryCtrl",["$scope","$rootScope","$http","$state",functi
 
     //검색하기
     $scope.searchOrder=function(){
-        alert($scope.channel);
+        if($scope.paymentDate !=null){
+            paymentDateValue=$scope.paymentDate.getFullYear()+"-"+(($scope.paymentDate.getMonth()+1)<10 ? '0'+($scope.paymentDate.getMonth()+1) : ($scope.paymentDate.getMonth()+1))+"-"+($scope.paymentDate.getDate()<10 ? '0'+$scope.paymentDate.getDate():$scope.paymentDate.getDate());
+        }
+        if($scope.confirmDate !=null){
+            confirmDateValue=$scope.confirmDate.getFullYear()+"-"+(($scope.confirmDate.getMonth()+1)<10 ? '0'+($scope.confirmDate.getMonth()+1) : ($scope.confirmDate.getMonth()+1))+"-"+($scope.confirmDate.getDate()<10 ? '0'+$scope.confirmDate.getDate():$scope.confirmDate.getDate());
+        }
+
+
+
+
+
+        alert("결제일 : "+paymentDateValue+", 완료일 : "+confirmDateValue);
+
+
+        $rootScope.loadingshow=true;
+        $scope.pageNum=1;
+
+        $scope.getOrderApi();
+
+        $rootScope.loadingshow=false;
+
     }
 
 

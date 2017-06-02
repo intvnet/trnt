@@ -19,18 +19,18 @@
 
             <md-input-container>
                 <label>결제일</label>
-                <md-datepicker name="startDate" ng-model="startDate" md-open-on-focus></md-datepicker>
+                <md-datepicker name="paymentDate" ng-model="paymentDate" md-open-on-focus></md-datepicker>
             </md-input-container>
 
             <span class="dateBetween">~</span>
 
             <md-input-container>
                 <label>완료일</label>
-                <md-datepicker name="endDate" ng-model="endDate" md-open-on-focus></md-datepicker>
+                <md-datepicker name="confirmDate" ng-model="confirmDate" md-open-on-focus></md-datepicker>
             </md-input-container>
 
             <select name="channel" ng-model="channel">
-                <option value="">채널선택</option>
+                <option value="">채널</option>
                 <option value="{{channelOption.CHANNEL_UID}}" ng-repeat="channelOption in channelOptions">{{channelOption.CHANNEL_NAME}}</option>
             </select>
 
@@ -41,7 +41,11 @@
 
             <md-input-container class="search_word_area">
                 <label>주문번호</label>
-                <input ng-model="searchWord" name="searchWord">
+                <input ng-model="channelOrderNo" name="channelOrderNo">
+            </md-input-container>
+            <md-input-container class="search_word_area">
+                <label>상품코드</label>
+                <input ng-model="itemBarcode" name="itemBarcode">
             </md-input-container>
 
 

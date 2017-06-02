@@ -204,7 +204,7 @@ md-menu-content md-menu-item .md-button{
 }
 .order_search_wrap button.md-primary{
     position: relative;
-
+    top:-20px;
 }
 
 
@@ -234,7 +234,12 @@ md-menu-content md-menu-item .md-button{
 
 .order_search_wrap select{
     font-size: 12px;
-    padding: 9px;
+    padding: 7px;
+    border-color: rgba(0,0,0,0.12);
+    color: gray;
+    position: relative;
+    top:-15px;
+    margin-left: 15px;
 }
 
 /*----------------------------------------------------------------------------------------주문내역*/
