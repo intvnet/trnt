@@ -1,0 +1,81 @@
+<div class="list_wrap">
+    <h3 class="pageTitle">재고현황</h3>
+
+    <p class="upload_wrap">
+        <md-button class="md-accent md-raised" ng-click="showAdvanced($event)"  >
+            업로드
+        </md-button>
+    </p>
+    <p class="stock_searchBtn_wrap">
+        <md-button ng-click="stockSearchToggle()">Search
+            <md-button ng-class="{on : stockSearchOn}" class="stockSearchBtn md-icon-button" ><i class="material-icons">keyboard_arrow_down</i></md-button>
+        </md-button>
+    </p>
+    <div class="stock_search_wrap" ng-class="{on : stockSearchOn}">
+        <form ng-submit="searchStock()" id="searchForm">
+
+            <md-input-container>
+                <label>기준일</label>
+                <md-datepicker name="endDate" ng-model="endDate" md-open-on-focus></md-datepicker>
+            </md-input-container>
+
+
+            <md-input-container class="search_word_area">
+                <label>검색어</label>
+                <input ng-model="searchWord" name="searchWord">
+            </md-input-container>
+
+            <md-button class="md-raised md-primary" type="submit" >검색</md-button>
+        </form>
+    </div>
+
+    <div class="dataTable_wrap">
+        <table>
+            <colgroup>
+                <col style="width:100px;">
+                <col style="width:100px;">
+                <col style="width:150px;">
+                <col style="width:100px;">
+                <col style="width:100px;">
+                <col style="width:100px;">
+                <col style="width:100px;">
+                <col style="width:100px;">
+                <col style="width:100px;">
+                <col style="width:100px;">
+                <col style="width:100px;">
+            </colgroup>
+            <thead>
+            <tr>
+                <th>기준일</th>
+                <th>브랜드</th>
+                <th>상품코드</th>
+                <th>사입수량<br/>(총 수량)</th>
+                <th>출고수량</th>
+                <th>손망실수량</th>
+                <th>입고수량<br/>(교환/반품)</th>
+                <th>재고수량<br/>(장부)</th>
+                <th>재고수량<br/>(세영)</th>
+                <th>재고차이<br/>(장부-세영)</th>
+                <th>가용재고<br/>(세영)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="data in datas">
+
+            </tr>
+            </tbody>
+        </table>
+        <div class="buy_moreBtn_wrap" ng-show="moreBtnShow">
+            <md-button class="md-raised md-primary" ng-click="moreGetList()">더보기</md-button>
+        </div>
+
+
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    $(function(){
+
+    });
+</script>

@@ -85,6 +85,28 @@ app.config(function($stateProvider,$urlRouterProvider){
             }
         }
     });
+
+    $stateProvider.state("stockInventory",{
+        url:"/stockInventory",
+        views:{
+            headerView:{
+                templateUrl:"view/header.html"
+            },
+            contentView:{
+                templateUrl:"view/stockInventory.html",
+                controller:"stockInventoryCtrl"
+            },
+            footerView:{
+                templateUrl:"view/footer.html"
+            },
+            navView:{
+                templateUrl:"view/nav.html"
+            }
+        }
+    });
+
+
+
     
 });
 

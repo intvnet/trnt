@@ -144,6 +144,8 @@ app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",funct
                 }
                 if(data.pageNum*listSize < data.totalCount){
                     $scope.moreBtnShow=true;
+                }else{
+                    $scope.moreBtnShow=false;
                 }
             }
 

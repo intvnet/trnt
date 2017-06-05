@@ -201,6 +201,7 @@ md-menu-content md-menu-item .md-button{
     position: relative;
     top:-5px;
     margin-left: 20px;
+    width: 300px;
 }
 .order_search_wrap button.md-primary{
     position: relative;
@@ -242,7 +243,24 @@ md-menu-content md-menu-item .md-button{
     margin-left: 15px;
 }
 
+.order_search_wrap .order_radio{
+    padding-top: 5px;
+}
+
+.order_search_wrap .order_radio>span{
+    padding-left: 15px;
+}
+.order_search_wrap .order_radio>span:nth-of-type(2){
+    padding-left: 187px;
+}
+
 /*----------------------------------------------------------------------------------------주문내역*/
+
+
+/*재고현황*/
+
+
+/*--------------------------------------------------------------------------------------------재고현황*/
 
 .pageTitle{
     position: absolute;

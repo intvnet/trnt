@@ -6,8 +6,8 @@ app.controller("orderHistoryCtrl",["$scope","$rootScope","$http","$state",functi
     $scope.moreBtnShow=false;
     var listSize=50;
     var promise;
-    var confirmDateValue;
-    var paymentDateValue;
+    var endDateValue;
+    var startDateValue;
 
 
     
@@ -31,7 +31,27 @@ app.controller("orderHistoryCtrl",["$scope","$rootScope","$http","$state",functi
             }
         });
     }
+    $scope.getStatusCodeList=function(){
+
+        $http({
+            url:$rootScope.aipUrl+'/api/code/ORST',
+            method:'GET',
+            withCredentials: true,
+        }).error(function(data,status){
+            $rootScope.checkStatus(status);
+            alert("error!");
+        }).success(function(data,status){
+            $rootScope.checkStatus(status);
+            if(data.code<=0){
+                alert("error! message : "+data.message);
+            }else{
+                $scope.statusCodeOptions=data.data;
+            }
+        });
+    }
     $scope.getChannelList();
+    $scope.getStatusCodeList();
+
     
     //검색부분열기
     $scope.orderSearchToggle=function(){
@@ -45,12 +65,13 @@ app.controller("orderHistoryCtrl",["$scope","$rootScope","$http","$state",functi
             url:$rootScope.aipUrl+'/api/orderHistory',
             method:'GET',
             params:{"pageNum":$scope.pageNum,
-            "paymentDate":paymentDateValue,
-            "confirmDate":confirmDateValue,
+            "dateType":$scope.dateType,
+            "startDate":startDateValue,
+            "endDate":endDateValue,
             "channel":$scope.channel,
             "statusCode":$scope.statusCode,
-            "channelOrderNo":$scope.channelOrderNo,
-            "itemBarcode":$scope.itemBarcode
+            "searchWordType":$scope.searchWordType,
+            "searchWord":$scope.searchWord
             },
             withCredentials: true,
         });
@@ -95,18 +116,33 @@ app.controller("orderHistoryCtrl",["$scope","$rootScope","$http","$state",functi
 
     //검색하기
     $scope.searchOrder=function(){
-        if($scope.paymentDate !=null){
-            paymentDateValue=$scope.paymentDate.getFullYear()+"-"+(($scope.paymentDate.getMonth()+1)<10 ? '0'+($scope.paymentDate.getMonth()+1) : ($scope.paymentDate.getMonth()+1))+"-"+($scope.paymentDate.getDate()<10 ? '0'+$scope.paymentDate.getDate():$scope.paymentDate.getDate());
+
+        if(($scope.startDate !=null && $scope.endDate==null) || ($scope.startDate ==null && $scope.endDate != null)){
+            alert("검색일을 선택하여 주세요!");
+            return false;
         }
-        if($scope.confirmDate !=null){
-            confirmDateValue=$scope.confirmDate.getFullYear()+"-"+(($scope.confirmDate.getMonth()+1)<10 ? '0'+($scope.confirmDate.getMonth()+1) : ($scope.confirmDate.getMonth()+1))+"-"+($scope.confirmDate.getDate()<10 ? '0'+$scope.confirmDate.getDate():$scope.confirmDate.getDate());
+
+
+
+        if($scope.startDate !=null && $scope.endDate !=null){
+            if($scope.dateType == null){
+                alert("날짜검색 기준을 선택하여 주세요!");
+                return false;
+            }else{
+                startDateValue=$scope.startDate.getFullYear()+"-"+(($scope.startDate.getMonth()+1)<10 ? '0'+($scope.startDate.getMonth()+1) : ($scope.startDate.getMonth()+1))+"-"+($scope.startDate.getDate()<10 ? '0'+$scope.startDate.getDate():$scope.startDate.getDate());
+                endDateValue=$scope.endDate.getFullYear()+"-"+(($scope.endDate.getMonth()+1)<10 ? '0'+($scope.endDate.getMonth()+1) : ($scope.endDate.getMonth()+1))+"-"+($scope.endDate.getDate()<10 ? '0'+$scope.endDate.getDate():$scope.endDate.getDate());
+            }
+        }
+
+
+        if($scope.searchWord != null && $scope.searchWordType == null){
+            alert("검색어의 기준을 선택하여 주세요!");
+            return false;
         }
 
 
 
-
-
-        alert("결제일 : "+paymentDateValue+", 완료일 : "+confirmDateValue);
+        alert("날짜기준 :"+$scope.dateType+"start : "+startDateValue+", end : "+endDateValue);
 
 
         $rootScope.loadingshow=true;
@@ -144,6 +180,8 @@ app.controller("orderHistoryCtrl",["$scope","$rootScope","$http","$state",functi
                 }
                 if(data.pageNum*listSize < data.totalCount){
                     $scope.moreBtnShow=true;
+                }else{
+                    $scope.moreBtnShow=false;
                 }
             }
 

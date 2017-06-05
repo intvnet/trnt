@@ -31,7 +31,10 @@ app.controller("uploadCtrl",function ($http,$scope,$rootScope,$state){
             }else if($scope.sourceType=="s"){
                 $scope.ajaxURL="/api/fileUpload/orderHistorySeyoung";
             }
-
+        }
+        //재고현황에서 업로드 할때
+        if($state.current.name == "stockInventory"){
+            $scope.ajaxURL="/api/fileUpload/stockInventory";
         }
 
 

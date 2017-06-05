@@ -17,17 +17,43 @@
     <div class="order_search_wrap" ng-class="{on : orderSearchOn}">
         <form ng-submit="searchOrder()" id="searchForm">
 
+
+            <div class="order_radio">
+                <span>날짜 기준 :</span>
+                <md-radio-group ng-model="dateType">
+                    <md-radio-button value="paymentDate" class="md-primary">결제일</md-radio-button>
+                    <md-radio-button value="confirmDate">완료일</md-radio-button>
+                </md-radio-group>
+
+                <span>검색어 기준 :</span>
+                <md-radio-group ng-model="searchWordType">
+                    <md-radio-button value="channelOrderNo" class="md-primary">주문번호</md-radio-button>
+                    <md-radio-button value="itemBarcode">상품코드</md-radio-button>
+                </md-radio-group>
+            </div>
+
+
             <md-input-container>
-                <label>결제일</label>
-                <md-datepicker name="paymentDate" ng-model="paymentDate" md-open-on-focus></md-datepicker>
+                <label>시작일</label>
+                <md-datepicker name="startDate" ng-model="startDate" md-open-on-focus></md-datepicker>
             </md-input-container>
 
             <span class="dateBetween">~</span>
 
             <md-input-container>
-                <label>완료일</label>
-                <md-datepicker name="confirmDate" ng-model="confirmDate" md-open-on-focus></md-datepicker>
+                <label>종료일</label>
+                <md-datepicker name="endDate" ng-model="endDate" md-open-on-focus></md-datepicker>
             </md-input-container>
+
+
+
+
+            <md-input-container class="search_word_area">
+                <label>검색어</label>
+                <input ng-model="searchWord" name="searchWord">
+            </md-input-container>
+
+
 
             <select name="channel" ng-model="channel">
                 <option value="">채널</option>
@@ -36,17 +62,9 @@
 
             <select name="statusCode" ng-model="statusCode">
                 <option value="">처리유형</option>
-                <option value="SHCP">배송</option>
+                <option value="{{statusCodeOption.CODE}}" ng-repeat="statusCodeOption in statusCodeOptions">{{statusCodeOption.CODE_TITLE}}</option>
             </select>
 
-            <md-input-container class="search_word_area">
-                <label>주문번호</label>
-                <input ng-model="channelOrderNo" name="channelOrderNo">
-            </md-input-container>
-            <md-input-container class="search_word_area">
-                <label>상품코드</label>
-                <input ng-model="itemBarcode" name="itemBarcode">
-            </md-input-container>
 
 
 
@@ -115,5 +133,11 @@
     </div>
 
 </div>
+
+
+<style>
+    md-radio-button{display: inline;padding-right: 15px;font-size: 12px;}
+
+</style>
 
 
