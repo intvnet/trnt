@@ -30,7 +30,7 @@ app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",funct
         promise.error(function(data,status){
             $rootScope.checkStatus(status);
             alert("error!");
-
+            $rootScope.loadingshow=false;
 
         });
         promise.success(function(data,status) {
@@ -45,11 +45,11 @@ app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",funct
                     $scope.moreBtnShow=true;
                 }
             }
-
+            $rootScope.loadingshow=false;
 
         });
 
-        $rootScope.loadingshow=false;
+
 
 
     }
@@ -87,8 +87,7 @@ app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",funct
         promise.error(function(data,status){
             $rootScope.checkStatus(status);
             alert("error!");
-
-
+            $rootScope.loadingshow=false;
         });
 
         promise.success(function(data,status) {
@@ -103,11 +102,11 @@ app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",funct
                     $scope.moreBtnShow=true;
                 }
             }
-
+            $rootScope.loadingshow=false;
 
         });
 
-        $rootScope.loadingshow=false;
+
     }
 
 
@@ -131,7 +130,7 @@ app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",funct
         promise.error(function(data,status){
             $rootScope.checkStatus(status);
             alert("error!");
-
+            $rootScope.loadingshow=false;
         });
 
         promise.success(function(data,status) {
@@ -148,10 +147,10 @@ app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",funct
                     $scope.moreBtnShow=false;
                 }
             }
-
+            $rootScope.loadingshow=false;
         });
 
-        $rootScope.loadingshow=false;
+
     }
 
 

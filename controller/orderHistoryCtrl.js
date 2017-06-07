@@ -91,6 +91,7 @@ app.controller("orderHistoryCtrl",["$scope","$rootScope","$http","$state",functi
         promise.error(function(data,status){
             $rootScope.checkStatus(status);
             alert("error!");
+            $rootScope.loadingshow=false;
         });
         promise.success(function(data,status){
             $rootScope.checkStatus(status);
@@ -98,15 +99,16 @@ app.controller("orderHistoryCtrl",["$scope","$rootScope","$http","$state",functi
                 alert("error! message : "+data.message);
             }else{
                 $scope.datas=data.data;
+                $scope.totalCount=data.totalCount;
                 if(data.pageNum*listSize < data.totalCount){
                     $scope.moreBtnShow=true;
                 }
             }
-            
+            $rootScope.loadingshow=false;
 
         });
 
-        $rootScope.loadingshow=false;
+
     }
 
     $scope.getOrderList();
@@ -153,6 +155,7 @@ app.controller("orderHistoryCtrl",["$scope","$rootScope","$http","$state",functi
         promise.error(function(data,status){
             $rootScope.checkStatus(status);
             alert("error!");
+            $rootScope.loadingshow=false;
         });
         promise.success(function(data,status){
             $rootScope.checkStatus(status);
@@ -160,16 +163,17 @@ app.controller("orderHistoryCtrl",["$scope","$rootScope","$http","$state",functi
                 alert("error! message : "+data.message);
             }else{
                 $scope.datas=data.data;
+                $scope.totalCount=data.totalCount;
                 if(data.pageNum*listSize < data.totalCount){
                     $scope.moreBtnShow=true;
                 }
             }
-
+            $rootScope.loadingshow=false;
 
         });
 
 
-        $rootScope.loadingshow=false;
+
 
     }
 
@@ -188,6 +192,7 @@ app.controller("orderHistoryCtrl",["$scope","$rootScope","$http","$state",functi
         promise.error(function(data,status){
             $rootScope.checkStatus(status);
             alert("error!");
+            $rootScope.loadingshow=false;
         });
         promise.success(function(data,status){
             $rootScope.checkStatus(status);
@@ -203,11 +208,11 @@ app.controller("orderHistoryCtrl",["$scope","$rootScope","$http","$state",functi
                     $scope.moreBtnShow=false;
                 }
             }
-
+            $rootScope.loadingshow=false;
 
         });
 
-        $rootScope.loadingshow=false;
+
 
     }
 

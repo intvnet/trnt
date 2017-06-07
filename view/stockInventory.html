@@ -19,6 +19,10 @@
                 <md-datepicker name="endDate" ng-model="endDate" md-open-on-focus></md-datepicker>
             </md-input-container>
 
+            <select name="brand" ng-model="brand">
+                <option value="">브랜드</option>
+            </select>
+
 
             <md-input-container class="search_word_area">
                 <label>검색어</label>
@@ -29,12 +33,14 @@
         </form>
     </div>
 
+
+    <div class="total_count">TotalCount : {{totalCount}}</div>
     <div class="dataTable_wrap">
-        <table>
+        <table class="stock_table">
             <colgroup>
                 <col style="width:100px;">
                 <col style="width:100px;">
-                <col style="width:150px;">
+                <col style="width:200px;">
                 <col style="width:100px;">
                 <col style="width:100px;">
                 <col style="width:100px;">
@@ -61,11 +67,24 @@
             </thead>
             <tbody>
             <tr ng-repeat="data in datas">
+                <td>{{data.confirmDate}}</td>
+                <td>{{data.brandCodeTitle}}</td>
+                <td>{{data.itemBarcode}}</td>
+
+                <td>{{data.receivedQty}}</td>
+                <td>{{data.orderOutQty | numberFilter}}</td>
+                <td></td>
+                <td>{{data.orderInQty | numberFilter}}</td>
+                <td>{{data.receivedQty-data.orderOutQty+data.orderInQty}}</td>
+                <td>{{data.totalQty | numberFilter}}</td>
+                <td>{{data.receivedQty-data.orderOutQty+data.orderInQty-data.totalQty}}</td>
+                <td>{{data.availableQty | numberFilter}}</td>
+
 
             </tr>
             </tbody>
         </table>
-        <div class="buy_moreBtn_wrap" ng-show="moreBtnShow">
+        <div class="stock_moreBtn_wrap" ng-show="moreBtnShow">
             <md-button class="md-raised md-primary" ng-click="moreGetList()">더보기</md-button>
         </div>
 

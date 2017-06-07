@@ -61,7 +61,7 @@ md-menu-content md-menu-item .md-button{
     height: 100%;
     background: #fff;
     margin:0;
-    padding: 20px 3px 0 0;
+    padding: 10px 3px 0 0;
     transform: translateX(-253px);
     transition: all 0.5s;
 }
@@ -123,7 +123,7 @@ md-menu-content md-menu-item .md-button{
 .dataTable_wrap tbody>tr td{
     padding:3px 0 2px 0;
 }
-.dataTable_wrap tbody tr:nth-child(even){
+.dataTable_wrap tbody tr:nth-child(odd){
     background: #a7ffeb;
 }
 
@@ -259,11 +259,100 @@ md-menu-content md-menu-item .md-button{
 
 /*재고현황*/
 
+.stock_search_wrap{
+    height: 0px;
+    overflow: hidden;
+    transition:height 0.5s;
+}
+.stock_search_wrap.on{
+    height: 103px;
+}
+.stock_search_wrap .dateBetween{
+    position: relative;
+    top:-20px;
+    padding: 0px 10px 0px 20px;
+}
+
+.stock_search_wrap .search_word_area{
+    position: relative;
+    top:-5px;
+    margin-left: 20px;
+}
+.stock_search_wrap button.md-primary{
+    position: relative;
+    top:-20px;
+}
+
+
+.stock_searchBtn_wrap{
+    margin:0;
+    text-align: right;
+    width: 1200px;
+}
+.stockSearchBtn>i{
+    vertical-align: middle;
+}
+.md-button.md-icon-button.stockSearchBtn{
+    padding:0;
+    margin:0;
+}
+.stockSearchBtn{
+    font-size: 12px;
+    transform: rotate(0deg);
+    transition: transform 0.5s;
+}
+
+.stockSearchBtn.on{
+    transform: rotate(180deg);
+}
+
+.stock_moreBtn_wrap{width:1200px;}
+
+.stock_search_wrap select{
+    font-size: 12px;
+    padding: 7px;
+    border-color: rgba(0,0,0,0.12);
+    color: gray;
+    position: relative;
+    top:-15px;
+    margin-left: 15px;
+}
+
+.stock_table th:nth-of-type(1),.stock_table th:nth-of-type(2),.stock_table th:nth-of-type(3){
+    color:black;
+    background: #cddc39;
+}
+.stock_table th:nth-of-type(4),.stock_table th:nth-of-type(5),.stock_table th:nth-of-type(6),.stock_table th:nth-of-type(7),.stock_table th:nth-of-type(8){
+    color:black;
+    background: #80d8ff;
+}
+.stock_table th:nth-of-type(9),.stock_table th:nth-of-type(10),.stock_table th:nth-of-type(11){
+    color:black;
+    background: #00bfa5;
+}
+
+.stock_table tr:nth-of-type(500n){
+    background: #00b0ff;
+}
+
 
 /*--------------------------------------------------------------------------------------------재고현황*/
 
+.total_count{
+    padding-left: 10px;
+}
 .pageTitle{
     position: absolute;
     top:0;
     left:30px;
 }
+
+/*
+md-toolbar{
+    min-height: 40px;
+}
+.md-toolbar-tools{
+    min-height: 40px;
+    height: 40px;
+}
+*/
