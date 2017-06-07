@@ -21,6 +21,7 @@
 
             <select name="brand" ng-model="brand">
                 <option value="">브랜드</option>
+                <option value="{{brandOption.CODE}}" ng-repeat="brandOption in brandOptions">{{brandOption.CODE_TITLE}}</option>
             </select>
 
 

@@ -13,7 +13,28 @@ app.controller("stockInventoryCtrl",function($scope,$rootScope,$state,$http){
         $scope.stockSearchOn = !$scope.stockSearchOn;
     }
     
-    
+
+    //검색옵션 불러오기
+    $scope.getBrandList=function(){
+        $http({
+            url:$rootScope.aipUrl+'/api/code/BRCD',
+            method:'GET',
+            withCredentials: true,
+        }).error(function(data,status){
+            $rootScope.checkStatus(status);
+            alert("error!");
+        }).success(function(data,status){
+            $rootScope.checkStatus(status);
+            if(data.code<=0){
+                alert("error! message : "+data.message);
+            }else{
+                $scope.brandOptions=data.data;
+            }
+        });
+    }
+    $scope.getBrandList();
+
+
     
     //Api 가져오기
     $scope.getStockApi=function(){
@@ -23,6 +44,7 @@ app.controller("stockInventoryCtrl",function($scope,$rootScope,$state,$http){
             params:{"pageNum":$scope.pageNum,
                 "endDate":endDateValue,
                 "searchWord":$scope.searchWord,
+                "brand":$scope.brand,
                 "listSize":listSize
             },
             withCredentials:true
@@ -47,7 +69,6 @@ app.controller("stockInventoryCtrl",function($scope,$rootScope,$state,$http){
             }else{
                 $scope.datas=data.data;
                 $scope.totalCount=data.totalCount;
-                console.log(data.data[0].brandCodeTitle);
                 if(data.pageNum*listSize < data.totalCount){
                     $scope.moreBtnShow=true;
                 }
@@ -69,6 +90,9 @@ app.controller("stockInventoryCtrl",function($scope,$rootScope,$state,$http){
     //더보기
     $scope.moreGetList=function(){
 
+        if($scope.endDate !=null){
+            endDateValue=$scope.endDate.getFullYear()+"-"+(($scope.endDate.getMonth()+1)<10 ? '0'+($scope.endDate.getMonth()+1) : ($scope.endDate.getMonth()+1))+"-"+($scope.endDate.getDate()<10 ? '0'+$scope.endDate.getDate():$scope.endDate.getDate());
+        }
 
         $rootScope.loadingshow=true;
         $scope.pageNum++;
@@ -101,6 +125,33 @@ app.controller("stockInventoryCtrl",function($scope,$rootScope,$state,$http){
 
 
     $scope.searchStock=function(){
+        if($scope.endDate !=null){
+            endDateValue=$scope.endDate.getFullYear()+"-"+(($scope.endDate.getMonth()+1)<10 ? '0'+($scope.endDate.getMonth()+1) : ($scope.endDate.getMonth()+1))+"-"+($scope.endDate.getDate()<10 ? '0'+$scope.endDate.getDate():$scope.endDate.getDate());
+        }
+
+        $rootScope.loadingshow=true;
+        $scope.pageNum=1;
+        $scope.getStockApi();
+
+        promise.error(function(data,status){
+            $rootScope.checkStatus(status);
+            alert("error!");
+            $rootScope.loadingshow=false;
+        });
+        promise.success(function(data,status){
+            $rootScope.checkStatus(status);
+            if(data.code <= 0){
+                alert("error! message : "+data.message);
+            }else{
+                $scope.datas=data.data;
+                $scope.totalCount=data.totalCount;
+                if(data.pageNum*listSize < data.totalCount){
+                    $scope.moreBtnShow=true;
+                }
+            }
+            $rootScope.loadingshow=false;
+
+        });
 
     }
 
