@@ -142,13 +142,32 @@ app.controller("orderHistoryCtrl",["$scope","$rootScope","$http","$state",functi
 
 
 
-        alert("날짜기준 :"+$scope.dateType+"start : "+startDateValue+", end : "+endDateValue);
+       
 
 
         $rootScope.loadingshow=true;
         $scope.pageNum=1;
 
         $scope.getOrderApi();
+
+        promise.error(function(data,status){
+            $rootScope.checkStatus(status);
+            alert("error!");
+        });
+        promise.success(function(data,status){
+            $rootScope.checkStatus(status);
+            if(data.code <= 0){
+                alert("error! message : "+data.message);
+            }else{
+                $scope.datas=data.data;
+                if(data.pageNum*listSize < data.totalCount){
+                    $scope.moreBtnShow=true;
+                }
+            }
+
+
+        });
+
 
         $rootScope.loadingshow=false;
 
