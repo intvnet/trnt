@@ -1,4 +1,4 @@
-var app = angular.module("trntApp",["ngMaterial","ui.router","ngMessages"]);
+var app = angular.module("trntApp",["ngMaterial","ui.router","ngMessages","ngJsonExportExcel"]);
 
 app.run(function($rootScope){
     $rootScope.loadingshow=false;
