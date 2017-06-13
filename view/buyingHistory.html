@@ -39,37 +39,43 @@
     <div class="dataTable_wrap">
         <table>
             <colgroup>
-                <col style="width:100px;">
-                <col style="width:100px;">
+                <col style="width:80px;">
                 <col style="width:150px;">
+                <col style="width:80px;">
+                <col style="width:230px;">
+                <col style="width:120px;">
+                <col style="width:50px;">
                 <col style="width:100px;">
+                <col style="width:50px;">
                 <col style="width:100px;">
-                <col style="width:100px;">
-                <col style="width:100px;">
-                <col style="width:100px;">
+                <col style="width:120px;">
             </colgroup>
             <thead>
             <tr>
-                <th>사입코드</th>
                 <th>사입일</th>
                 <th>상품코드</th>
                 <th>입고구분</th>
-                <th>출고수량</th>
-                <th>송신수량</th>
-                <th>출고금액</th>
+                <th>상품명</th>
+                <th>품번</th>
+                <th>입고수량</th>
+                <th>Tag단가</th>
+                <th>매입율</th>
                 <th>매입단가</th>
+                <th>매입가합계</th>
             </tr>
             </thead>
             <tbody>
             <tr ng-repeat="data in datas">
-                <td>{{data.buyingNo}}</td>
                 <td>{{data.buyingDate}}</td>
                 <td>{{data.itemBarcode}}</td>
                 <td>{{data.buyingPlaningType | bpTypeFilter}}</td>
-                <td>{{data.shippedQty}}</td>
+                <td>{{data.itemName}}</td>
+                <td>{{data.itemNo}}</td>
                 <td>{{data.receivedQty}}</td>
-                <td>{{data.shippedAmount | currency:'\u20a9 ':0}}</td>
+                <td>{{data.tagPrice | currency:'\u20a9 ':0}}</td>
+                <td>{{data.buyingRate*100}}%</td>
                 <td>{{data.buyingPrice | currency:'\u20a9 ':1}}</td>
+                <td>{{data.buyingAmount | currency:'\u20a9 ':1}}</td>
             </tr>
             </tbody>
         </table>
