@@ -39,12 +39,13 @@
     <div class="dataTable_wrap">
         <table>
             <colgroup>
+                <col style="width:50px;">
                 <col style="width:80px;">
                 <col style="width:150px;">
                 <col style="width:80px;">
                 <col style="width:230px;">
                 <col style="width:120px;">
-                <col style="width:50px;">
+                <col style="width:80px;">
                 <col style="width:100px;">
                 <col style="width:50px;">
                 <col style="width:100px;">
@@ -52,6 +53,7 @@
             </colgroup>
             <thead>
             <tr>
+                <th>번호</th>
                 <th>사입일</th>
                 <th>상품코드</th>
                 <th>입고구분</th>
@@ -66,6 +68,7 @@
             </thead>
             <tbody>
             <tr ng-repeat="data in datas">
+                <td>{{$index+1}}</td>
                 <td>{{data.buyingDate}}</td>
                 <td>{{data.itemBarcode}}</td>
                 <td>{{data.buyingPlaningType | bpTypeFilter}}</td>

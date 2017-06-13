@@ -7,6 +7,7 @@ app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",funct
     var endDateValue;
     $scope.buyingSearchOn=false;
     var promise;
+    $scope.listCount=1;
 
 
 

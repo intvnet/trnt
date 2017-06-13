@@ -158,7 +158,7 @@ md-menu-content md-menu-item .md-button{
 .buy_searchBtn_wrap{
     margin:0;
     text-align: right;
-    width: 850px;
+    width: 1200px;
 }
 .buyingSearchBtn>i{
     vertical-align: middle;
@@ -177,7 +177,7 @@ md-menu-content md-menu-item .md-button{
     transform: rotate(180deg);
 }
 
-.buy_moreBtn_wrap{width:900px;}
+.buy_moreBtn_wrap{width:1200px;}
 /*-------------------------------------------------------------------------------------------사입내역*/
 
 
