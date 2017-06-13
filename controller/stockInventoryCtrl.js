@@ -155,6 +155,62 @@ app.controller("stockInventoryCtrl",function($scope,$rootScope,$state,$http){
 
     }
 
+
+
+    
+    $scope.excel=function(){
+
+        if($scope.endDate !=null){
+            endDateValue=$scope.endDate.getFullYear()+"-"+(($scope.endDate.getMonth()+1)<10 ? '0'+($scope.endDate.getMonth()+1) : ($scope.endDate.getMonth()+1))+"-"+($scope.endDate.getDate()<10 ? '0'+$scope.endDate.getDate():$scope.endDate.getDate());
+        }
+        $rootScope.loadingshow=true;
+        $http({
+            url:$rootScope.aipUrl+'/api/inventory/report',
+            method:'GET',
+            params:{"pageNum":1,
+                "endDate":endDateValue,
+                "searchWord":$scope.searchWord,
+                "brand":$scope.brand,
+                "listSize":$scope.totalCount
+            },
+            withCredentials:true
+        }).success(function(data,status){
+            $rootScope.checkStatus(status);
+            if(data.code <= 0){
+                alert("error! message : "+data.message);
+            }else{
+                var csvData=[];
+                var datas=data.data;
+                for(var i=0;i<datas.length;i++){
+                    csvData.push({"기준일":datas[i].confirmDate,
+                        "브랜드":datas[i].brandCodeTitle,
+                        "상품코드":datas[i].itemBarcode,
+                        "사입수량":datas[i].receivedQty,
+                        "출고수량":datas[i].orderOutQty==null?0:datas[i].orderOutQty,
+                        "손망실수량":0,
+                        "입고수량":datas[i].orderInQty==null?0:datas[i].orderInQty,
+                        "재고수량(장부)":(datas[i].receivedQty=null?0:datas[i].receivedQty)-(datas[i].orderOutQty==null?0:datas[i].orderOutQty)+(datas[i].orderInQty==null?0:datas[i].orderInQty),
+                        "재고수량(세영)":datas[i].totalQty==null?0:datas[i].totalQty,
+                        "재고차이":(datas[i].receivedQty==null?0:datas[i].receivedQty)-(datas[i].orderOutQty==null?0:datas[i].orderOutQty)+(datas[i].orderInQty==null?0:datas[i].orderInQty)-(datas[i].totalQty==null?0:datas[i].totalQty),
+                        "가용재고":datas[i].availableQty==null?0:datas[i].availableQty
+                    });
+                }
+                console.log(csvData);
+                JSONToCSVConvertor(csvData,"Title",true);
+            }
+            $rootScope.loadingshow=false;
+        }).error(function(data,status){
+            $rootScope.checkStatus(status);
+            alert("error!");
+            $rootScope.loadingshow=false;
+        });
+
+
+
+
+    }
+
+
 });
 
 

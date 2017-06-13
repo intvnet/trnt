@@ -1,4 +1,4 @@
-var app = angular.module("trntApp",["ngMaterial","ui.router","ngMessages","ngJsonExportExcel"]);
+var app = angular.module("trntApp",["ngMaterial","ui.router","ngMessages"]);
 
 app.run(function($rootScope){
     $rootScope.loadingshow=false;
@@ -106,6 +106,24 @@ app.config(function($stateProvider,$urlRouterProvider){
     });
 
 
+    $stateProvider.state("performanceWeekly",{
+        url:"/performanceWeekly",
+        views:{
+            headerView:{
+                templateUrl:"view/header.html"
+            },
+            contentView:{
+                templateUrl:"view/performanceWeekly.html",
+                controller:"performanceWeeklyCtrl"
+            },
+            footerView:{
+                templateUrl:"view/footer.html"
+            },
+            navView:{
+                templateUrl:"view/nav.html"
+            }
+        }
+    });
 
     
 });

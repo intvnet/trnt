@@ -1,6 +1,8 @@
 <div class="list_wrap">
     <h3 class="pageTitle">재고현황</h3>
-    <button ng-json-export-excel data="datas" report-fields="{confirmDate: 'confirmDate', brandCodeTitle: 'brandCodeTitle', itemBarcode: 'itemBarcode'}">엑셀테스트</button>
+
+    <button ng-click="excel()">ex</button>
+
     <p class="upload_wrap">
         <md-button class="md-accent md-raised" ng-click="showAdvanced($event)"  >
             업로드
@@ -71,7 +73,6 @@
                 <td>{{data.confirmDate}}</td>
                 <td>{{data.brandCodeTitle}}</td>
                 <td>{{data.itemBarcode}}</td>
-
                 <td>{{data.receivedQty}}</td>
                 <td>{{data.orderOutQty | numberFilter}}</td>
                 <td></td>
