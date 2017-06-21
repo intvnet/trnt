@@ -2,7 +2,7 @@
 app.controller("orderHistoryCtrl",["$scope","$rootScope","$http","$state",function($scope,$rootScope,$http,$state){
     //alert("차트 컨트롤러");
     $rootScope.menuOn=false;
-    $scope.orderSearchOn=false;
+    $scope.orderSearchOn=true;
     $scope.moreBtnShow=false;
     var listSize=50;
     var promise;
@@ -218,13 +218,3 @@ app.controller("orderHistoryCtrl",["$scope","$rootScope","$http","$state",functi
 
 }]);
 
-//필터
-app.filter("odTypeFilter",function(){
-    return function(input){
-        if(input=="E"){
-            return "자체";
-        }else if(input=="S"){
-            return "위탁";
-        }
-    }
-});

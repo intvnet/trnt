@@ -46,7 +46,7 @@ function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
     }
 
     //Generate a file name
-    var fileName = "MyReport_";
+    var fileName = "";
     //this will remove the blank-spaces from the title and replace it with an underscore
     fileName += ReportTitle.replace(/ /g,"_");
 

@@ -2,10 +2,11 @@ app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",funct
     //alert("리스트 컨트롤러");
     $rootScope.menuOn=false;
     $scope.moreBtnShow=false;
+    $scope.buyingSearchOn=true;
     var listSize=50;
     var startDateValue;
     var endDateValue;
-    $scope.buyingSearchOn=false;
+
     var promise;
     $scope.listCount=1;
 
@@ -158,13 +159,3 @@ app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",funct
 }]);
 
 
-//필터
-app.filter("bpTypeFilter",function(){
-    return function(input){
-        if(input=="P"){
-            return "정상입고";
-        }else if(input=="A"){
-            return "추가입고";
-        }
-    }
-});

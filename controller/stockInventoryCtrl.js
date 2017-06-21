@@ -1,12 +1,12 @@
 app.controller("stockInventoryCtrl",function($scope,$rootScope,$state,$http){
 
     $rootScope.menuOn=false;
-    $scope.stockSearchOn=false;
+    $scope.stockSearchOn=true;
     $scope.moreBtnShow=true;
     var listSize=500;
     var promise;
     var endDateValue;
-
+    var today=new Date().toLocaleDateString();
 
     //검색부분열기
     $scope.stockSearchToggle=function(){
@@ -195,8 +195,8 @@ app.controller("stockInventoryCtrl",function($scope,$rootScope,$state,$http){
                         "가용재고":datas[i].availableQty==null?0:datas[i].availableQty
                     });
                 }
-                console.log(csvData);
-                JSONToCSVConvertor(csvData,"Title",true);
+
+                JSONToCSVConvertor(csvData,today+"(재고현황)",true);
             }
             $rootScope.loadingshow=false;
         }).error(function(data,status){
@@ -214,13 +214,3 @@ app.controller("stockInventoryCtrl",function($scope,$rootScope,$state,$http){
 });
 
 
-//필터
-app.filter("numberFilter",function(){
-    return function(input){
-        if(input==null){
-            return "0";
-        }else if(input !=null){
-            return input;
-        }
-    }
-});

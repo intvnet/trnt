@@ -1,4 +1,4 @@
-var app = angular.module("trntApp",["ngMaterial","ui.router","ngMessages"]);
+var app = angular.module("trntApp",["ngMaterial","ui.router","ngMessages","ngAnimate"]);
 
 app.run(function($rootScope){
     $rootScope.loadingshow=false;
@@ -173,4 +173,35 @@ app.controller("htmlCtrl",function ($scope,$rootScope,$state,$mdDialog){
 });
 
 
+//필터
+app.filter("odTypeFilter",function(){
+    return function(input){
+        if(input=="E"){
+            return "자체";
+        }else if(input=="S"){
+            return "위탁";
+        }
+    }
+});
+
+app.filter("bpTypeFilter",function(){
+    return function(input){
+        if(input=="P"){
+            return "정상입고";
+        }else if(input=="A"){
+            return "추가입고";
+        }
+    }
+});
+
+//값이 없을때 0 반환하는 필터
+app.filter("numberFilter",function(){
+    return function(input){
+        if(input==null){
+            return "0";
+        }else if(input !=null){
+            return input;
+        }
+    }
+});
 

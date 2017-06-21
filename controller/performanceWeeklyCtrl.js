@@ -14,7 +14,8 @@ app.controller("performanceWeeklyCtrl",function($scope,$rootScope,$http){
             withCredentials: true
         });
     }
-    
+
+
     //데이터 가져오기
     $scope.getWeeklyData=function(){
         $rootScope.loadingshow=true;
@@ -31,13 +32,43 @@ app.controller("performanceWeeklyCtrl",function($scope,$rootScope,$http){
             if(data.code <= 0){
                 alert("error! message : "+data.message);
             }else{
-                $scope.datas=data.data;
-                console.log($scope.datas);
+
+
+
+                $scope.datasNiiE=data.data.filter(function(ob){
+                    return ob.brandCode == 'N' && ob.sourceType =='E';
+                });
+                $scope.datasNiiS=data.data.filter(function(ob){
+                    return ob.brandCode == 'N' && ob.sourceType =='S';
+                });
+                $scope.datasCcE=data.data.filter(function(ob){
+                    return ob.brandCode == 'K' && ob.sourceType =='E';
+                });
+                $scope.datasCcS=data.data.filter(function(ob){
+                    return ob.brandCode == 'K' && ob.sourceType =='S';
+                });
+
+
+
             }
             $rootScope.loadingshow=false;
         });
     }
 
+
+
+
     $scope.getWeeklyData();
+
+
+    //계획 합계 함수
+    $scope.planAmountSum=function(array){
+        var total=0;
+            for(var i=0;i<array.length;i++){
+                total+=(array[i].planAmount==null ?0 :array[i].planAmount);
+            }
+        return total;
+    }
+
 
 });
