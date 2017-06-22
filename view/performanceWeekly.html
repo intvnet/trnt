@@ -1,8 +1,13 @@
 <div class="list_wrap">
-    <h3>주간실적</h3>
+    <h3 class="pageTitle">주간실적</h3>
+    <p class="upload_wrap">
+        <md-button class="md-accent md-raised" ng-click="showAdvanced($event)"  >
+            업로드
+        </md-button>
+    </p>
 
     <div class="dataTable_wrap">
-        <table>
+        <table class="perTable">
             <colgroup>
                 <col style="width:100px">
                 <col style="width:100px">
@@ -34,9 +39,9 @@
                 </tr>
             </thead>
             <tbody>
-
+                <!--NII-->
                 <tr>
-                    <td rowspan="{{datasNiiE.length+datasNiiS.length+4}}">NII</td>
+                    <td rowspan="{{datasNiiE.length+datasNiiS.length+4}}" class="borderNoneR">NII</td>
                 </tr>
                 <tr ng-repeat="dataNiiE in datasNiiE">
 
@@ -46,8 +51,8 @@
                     <td>{{dataNiiE.cumulativePlanAmount}}</td>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td>소계</td>
+                    <td class="borderNoneL"></td>
+                    <td class="borderNoneL">소계</td>
                     <td>{{planAmountSum(datasNiiE)}}</td>
                 </tr>
                 <tr ng-repeat="dataNiiS in datasNiiS">
@@ -58,13 +63,47 @@
                     <td>{{dataNiiS.cumulativePlanAmount}}</td>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td>소계</td>
+                    <td class="borderNoneL"></td>
+                    <td class="borderNoneL">소계</td>
                     <td>{{planAmountSum(datasNiiS)}}</td>
                 </tr>
                 <tr>
 
-                    <td colspan="2">합계</td>
+                    <td colspan="2" class="borderNoneL">합계</td>
+
+                </tr>
+
+                <!--CC-->
+                <tr>
+                    <td rowspan="{{datasCcE.length+datasCcS.length+4}}" class="borderNoneR">CC</td>
+                </tr>
+                <tr ng-repeat="dataCcE in datasCcE">
+
+                    <td ng-show="{{$first}}" rowspan="{{datasCcE.length}}">{{dataCcE.sourceType}}</td>
+                    <td>{{dataCcE.channelName}}</td>
+                    <td>{{dataCcE.planAmount}}</td>
+                    <td>{{dataCcE.cumulativePlanAmount}}</td>
+                </tr>
+                <tr>
+                    <td class="borderNoneL"></td>
+                    <td class="borderNoneL">소계</td>
+                    <td>{{planAmountSum(datasCcE)}}</td>
+                </tr>
+                <tr ng-repeat="dataCcS in datasCcS">
+
+                    <td ng-show="{{$first}}" rowspan="{{datasCcS.length}}">{{dataCcS.sourceType}}</td>
+                    <td>{{dataCcS.channelName}}</td>
+                    <td>{{dataCcS.planAmount}}</td>
+                    <td>{{dataCcS.cumulativePlanAmount}}</td>
+                </tr>
+                <tr>
+                    <td class="borderNoneL"></td>
+                    <td class="borderNoneL">소계</td>
+                    <td>{{planAmountSum(datasCcS)}}</td>
+                </tr>
+                <tr>
+
+                    <td colspan="2" class="borderNoneL">합계</td>
 
                 </tr>
             </tbody>

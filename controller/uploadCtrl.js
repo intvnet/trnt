@@ -30,6 +30,8 @@ app.controller("uploadCtrl",function ($http,$scope,$rootScope,$state){
                 $scope.ajaxURL="/api/fileUpload/orderHistoryEcm";
             }else if($scope.sourceType=="s"){
                 $scope.ajaxURL="/api/fileUpload/orderHistorySeyoung";
+            }else if($scope.sourceType=="r"){
+                $scope.ajaxURL="/api/fileUpload/orderReturnHistory";
             }
         }
         //재고현황에서 업로드 할때
@@ -37,7 +39,10 @@ app.controller("uploadCtrl",function ($http,$scope,$rootScope,$state){
             $scope.ajaxURL="/api/fileUpload/stockInventory";
         }
 
-
+        //주간실적에서 업로드
+        if($state.current.name == "performanceWeekly"){
+            $scope.ajaxURL="/api/fileUpload/";
+        }
 
 
         var uploadForm=document.getElementById('uploadForm');

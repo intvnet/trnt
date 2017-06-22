@@ -108,6 +108,7 @@ md-menu-content md-menu-item .md-button{
 
 td.right{text-align: right;}
 
+
 /*사입내역*/
 .dataTable_wrap{
     padding-left: 5px;
@@ -115,7 +116,7 @@ td.right{text-align: right;}
     margin: auto;
 }
 .dataTable_wrap thead{
-    background: #004d40;
+    background: #00897b;
     font-size: 12px;
     color:white;
 }
@@ -342,6 +343,25 @@ td.right{text-align: right;}
 
 
 /*--------------------------------------------------------------------------------------------재고현황*/
+
+
+/*주간실적*/
+.dataTable_wrap .perTable tr:nth-child(odd){
+    background: none;
+}
+.dataTable_wrap .perTable{
+    border-collapse:collapse;
+}
+.dataTable_wrap .perTable td,.dataTable_wrap .perTable th{
+    border: 1px solid black;
+}
+.dataTable_wrap .perTable td.borderNoneL{border-left:none;}
+.dataTable_wrap .perTable td.borderNoneR{border-right:none;}
+.dataTable_wrap .perTable td.borderNoneT{border-top:none;}
+.dataTable_wrap .perTable td.borderNoneB{border-bottom:none;}
+
+/*--------------------------------------------------------------------------------------------주간실적*/
+
 
 .total_count{
     padding-left: 10px;
