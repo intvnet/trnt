@@ -45,25 +45,25 @@
                 </tr>
                 <tr ng-repeat="dataNiiE in datasNiiE">
 
-                    <td ng-show="{{$first}}" rowspan="{{datasNiiE.length}}">{{dataNiiE.sourceType}}</td>
+                    <td ng-show="{{$first}}" rowspan="{{datasNiiE.length}}" class="borderNoneB">{{dataNiiE.sourceType}}</td>
                     <td>{{dataNiiE.channelName}}</td>
                     <td>{{dataNiiE.planAmount}}</td>
                     <td>{{dataNiiE.cumulativePlanAmount}}</td>
                 </tr>
                 <tr>
-                    <td class="borderNoneL"></td>
+                    <td class="borderNoneR borderNoneT"></td>
                     <td class="borderNoneL">소계</td>
                     <td>{{planAmountSum(datasNiiE)}}</td>
                 </tr>
                 <tr ng-repeat="dataNiiS in datasNiiS">
 
-                    <td ng-show="{{$first}}" rowspan="{{datasNiiS.length}}">{{dataNiiS.sourceType}}</td>
+                    <td ng-show="{{$first}}" rowspan="{{datasNiiS.length}}" class="borderNoneB">{{dataNiiS.sourceType}}</td>
                     <td>{{dataNiiS.channelName}}</td>
                     <td>{{dataNiiS.planAmount}}</td>
                     <td>{{dataNiiS.cumulativePlanAmount}}</td>
                 </tr>
                 <tr>
-                    <td class="borderNoneL"></td>
+                    <td class="borderNoneR borderNoneT"></td>
                     <td class="borderNoneL">소계</td>
                     <td>{{planAmountSum(datasNiiS)}}</td>
                 </tr>
@@ -79,25 +79,25 @@
                 </tr>
                 <tr ng-repeat="dataCcE in datasCcE">
 
-                    <td ng-show="{{$first}}" rowspan="{{datasCcE.length}}">{{dataCcE.sourceType}}</td>
+                    <td ng-show="{{$first}}" rowspan="{{datasCcE.length}}" class="borderNoneB">{{dataCcE.sourceType}}</td>
                     <td>{{dataCcE.channelName}}</td>
                     <td>{{dataCcE.planAmount}}</td>
                     <td>{{dataCcE.cumulativePlanAmount}}</td>
                 </tr>
                 <tr>
-                    <td class="borderNoneL"></td>
+                    <td class="borderNoneR borderNoneT"></td>
                     <td class="borderNoneL">소계</td>
                     <td>{{planAmountSum(datasCcE)}}</td>
                 </tr>
                 <tr ng-repeat="dataCcS in datasCcS">
 
-                    <td ng-show="{{$first}}" rowspan="{{datasCcS.length}}">{{dataCcS.sourceType}}</td>
+                    <td ng-show="{{$first}}" rowspan="{{datasCcS.length}}" class="borderNoneB">{{dataCcS.sourceType}}</td>
                     <td>{{dataCcS.channelName}}</td>
                     <td>{{dataCcS.planAmount}}</td>
                     <td>{{dataCcS.cumulativePlanAmount}}</td>
                 </tr>
                 <tr>
-                    <td class="borderNoneL"></td>
+                    <td class="borderNoneR borderNoneT"></td>
                     <td class="borderNoneL">소계</td>
                     <td>{{planAmountSum(datasCcS)}}</td>
                 </tr>
