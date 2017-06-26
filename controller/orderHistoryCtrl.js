@@ -21,9 +21,7 @@ app.controller("orderHistoryCtrl",["$scope","$rootScope","$http","$state",functi
             withCredentials: true,
         }).error(function(data,status){
             $rootScope.checkStatus(status);
-            alert("error!");
         }).success(function(data,status){
-            $rootScope.checkStatus(status);
             if(data.code<=0){
                 alert("error! message : "+data.message);
             }else{
@@ -39,9 +37,7 @@ app.controller("orderHistoryCtrl",["$scope","$rootScope","$http","$state",functi
             withCredentials: true,
         }).error(function(data,status){
             $rootScope.checkStatus(status);
-            alert("error!");
         }).success(function(data,status){
-            $rootScope.checkStatus(status);
             if(data.code<=0){
                 alert("error! message : "+data.message);
             }else{
@@ -90,11 +86,9 @@ app.controller("orderHistoryCtrl",["$scope","$rootScope","$http","$state",functi
 
         promise.error(function(data,status){
             $rootScope.checkStatus(status);
-            alert("error!");
             $rootScope.loadingshow=false;
         });
         promise.success(function(data,status){
-            $rootScope.checkStatus(status);
             if(data.code <= 0){
                 alert("error! message : "+data.message);
             }else{
@@ -154,11 +148,9 @@ app.controller("orderHistoryCtrl",["$scope","$rootScope","$http","$state",functi
 
         promise.error(function(data,status){
             $rootScope.checkStatus(status);
-            alert("error!");
             $rootScope.loadingshow=false;
         });
         promise.success(function(data,status){
-            $rootScope.checkStatus(status);
             if(data.code <= 0){
                 alert("error! message : "+data.message);
             }else{
@@ -191,11 +183,9 @@ app.controller("orderHistoryCtrl",["$scope","$rootScope","$http","$state",functi
 
         promise.error(function(data,status){
             $rootScope.checkStatus(status);
-            alert("error!");
             $rootScope.loadingshow=false;
         });
         promise.success(function(data,status){
-            $rootScope.checkStatus(status);
             if(data.code <= 0){
                 alert("error! message : "+data.message);
             }else{

@@ -31,13 +31,10 @@ app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",funct
 
         promise.error(function(data,status){
             $rootScope.checkStatus(status);
-            alert("error!");
             $rootScope.loadingshow=false;
 
         });
         promise.success(function(data,status) {
-            $rootScope.checkStatus(status);
-
             if(data.code<=0){
                 alert("error! message : "+data.message);
             }else{
@@ -88,13 +85,10 @@ app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",funct
 
         promise.error(function(data,status){
             $rootScope.checkStatus(status);
-            alert("error!");
             $rootScope.loadingshow=false;
         });
 
         promise.success(function(data,status) {
-            $rootScope.checkStatus(status);
-
             if(data.code<=0){
                 alert("error! message : "+data.message);
             }else{
@@ -131,12 +125,10 @@ app.controller("buyingHistoryCtrl",["$scope","$rootScope","$http","$state",funct
 
         promise.error(function(data,status){
             $rootScope.checkStatus(status);
-            alert("error!");
             $rootScope.loadingshow=false;
         });
 
         promise.success(function(data,status) {
-            $rootScope.checkStatus(status);
             if(data.code<=0){
                 alert("error!! code : "+data.code);
             }else{

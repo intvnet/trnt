@@ -23,12 +23,10 @@ app.controller("performanceWeeklyCtrl",function($scope,$rootScope,$http){
 
         promise.error(function(data,status){
             $rootScope.checkStatus(status);
-            alert("error!");
             $rootScope.loadingshow=false;
         });
 
         promise.success(function(data,status){
-            $rootScope.checkStatus(status);
             if(data.code <= 0){
                 alert("error! message : "+data.message);
             }else{
@@ -36,16 +34,16 @@ app.controller("performanceWeeklyCtrl",function($scope,$rootScope,$http){
 
 
                 $scope.datasNiiE=data.data.filter(function(ob){
-                    return ob.brandCode == 'N' && ob.sourceType =='E';
+                    return ob.brandCode == 'N' && ob.salesOwnerCode =='TRNT';
                 });
                 $scope.datasNiiS=data.data.filter(function(ob){
-                    return ob.brandCode == 'N' && ob.sourceType =='S';
+                    return ob.brandCode == 'N' && ob.salesOwnerCode =='SEYO';
                 });
                 $scope.datasCcE=data.data.filter(function(ob){
-                    return ob.brandCode == 'K' && ob.sourceType =='E';
+                    return ob.brandCode == 'K' && ob.salesOwnerCode =='TRNT';
                 });
                 $scope.datasCcS=data.data.filter(function(ob){
-                    return ob.brandCode == 'K' && ob.sourceType =='S';
+                    return ob.brandCode == 'K' && ob.salesOwnerCode =='SEYO';
                 });
 
 

@@ -64,7 +64,7 @@ app.controller("uploadCtrl",function ($http,$scope,$rootScope,$state){
                     data:formData,
                     withCredentials: true
                 }).success(function(data,status){
-                    console.log(data);
+                    //console.log(data);
                     if(data.code<=0){
                         alert("error! message : "+data.message);
                     }else{
@@ -74,8 +74,8 @@ app.controller("uploadCtrl",function ($http,$scope,$rootScope,$state){
                     }
                     $scope.uploadLoadingshow=false;
                 }).error(function(data,status){
-                    alert("error!");
-                    console.log(data);
+                    $rootScope.checkStatus(status);
+                    //console.log(data);
                     $scope.uploadLoadingshow=false;
                 });
             }else{

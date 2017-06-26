@@ -167,7 +167,10 @@ app.controller("htmlCtrl",function ($scope,$rootScope,$state,$mdDialog){
 
     $rootScope.checkStatus=function(status){
         if(status===401){
+            alert("sesstion time out!");
             location.href="/login.html";
+        }else{
+            alert("error!");
         }
     }
 });

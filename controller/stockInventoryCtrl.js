@@ -22,9 +22,7 @@ app.controller("stockInventoryCtrl",function($scope,$rootScope,$state,$http){
             withCredentials: true,
         }).error(function(data,status){
             $rootScope.checkStatus(status);
-            alert("error!");
         }).success(function(data,status){
-            $rootScope.checkStatus(status);
             if(data.code<=0){
                 alert("error! message : "+data.message);
             }else{
@@ -59,11 +57,9 @@ app.controller("stockInventoryCtrl",function($scope,$rootScope,$state,$http){
 
         promise.error(function(data,status){
             $rootScope.checkStatus(status);
-            alert("error!");
             $rootScope.loadingshow=false;
         });
         promise.success(function(data,status){
-            $rootScope.checkStatus(status);
             if(data.code <= 0){
                 alert("error! message : "+data.message);
             }else{
@@ -100,11 +96,9 @@ app.controller("stockInventoryCtrl",function($scope,$rootScope,$state,$http){
 
         promise.error(function(data,status){
             $rootScope.checkStatus(status);
-            alert("error!");
             $rootScope.loadingshow=false;
         });
         promise.success(function(data,status){
-            $rootScope.checkStatus(status);
             if(data.code <= 0){
                 alert("error! message : "+data.message);
             }else{
@@ -135,11 +129,9 @@ app.controller("stockInventoryCtrl",function($scope,$rootScope,$state,$http){
 
         promise.error(function(data,status){
             $rootScope.checkStatus(status);
-            alert("error!");
             $rootScope.loadingshow=false;
         });
         promise.success(function(data,status){
-            $rootScope.checkStatus(status);
             if(data.code <= 0){
                 alert("error! message : "+data.message);
             }else{
@@ -175,7 +167,6 @@ app.controller("stockInventoryCtrl",function($scope,$rootScope,$state,$http){
             },
             withCredentials:true
         }).success(function(data,status){
-            $rootScope.checkStatus(status);
             if(data.code <= 0){
                 alert("error! message : "+data.message);
             }else{
@@ -201,7 +192,6 @@ app.controller("stockInventoryCtrl",function($scope,$rootScope,$state,$http){
             $rootScope.loadingshow=false;
         }).error(function(data,status){
             $rootScope.checkStatus(status);
-            alert("error!");
             $rootScope.loadingshow=false;
         });
 
